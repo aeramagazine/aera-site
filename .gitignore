@@ -1,0 +1,5 @@
+# not part of the website
+.DS_Store
+.claude/
+*.mov
+website-prompt.md

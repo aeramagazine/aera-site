@@ -1,0 +1,3 @@
+# Netlify settings: the website files live at the top of this project
+[build]
+  publish = "."
