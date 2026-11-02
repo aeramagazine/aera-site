@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aera Magazine</title>
+  <meta name="description" content="Aera Magazine — a student-run fashion publication. Stories, photography, staff and every issue.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Doto:wght@600&family=EB+Garamond:ital@0;1&family=Montserrat:wght@300;400&family=Pinyon+Script&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+
+    <section class="hero-name">
+      <h1 class="wordmark" aria-label="Aera">
+        <span>A</span><span>E</span><span>R</span><span>A</span>
+      </h1>
+      <div class="hero-sub">
+        <span class="dot">fashion magazine</span>
+        <span class="mono">fashion × culture · politics · environment</span>
+        <span class="mono">issue 06 — “soft armor” — out now</span>
+      </div>
+    </section>
+
+    <!-- THE BOOKSHELF -->
+    <section class="shelf-panel" aria-label="The Aera bookshelf: issues, stories and sections">
+      <div class="panel-corners"><span>aera</span><span>part vi</span><span><a href="about.html" style="text-decoration:none">about</a></span></div>
+      <h2 class="shelf-title">The Aera<br><em>Archive</em></h2>
+      <div class="shelf" id="shelf"></div>
+      <div class="shelf-hint mono muted"><span>drag the shelf · <span class="on-mouse">hover</span><span class="on-touch">tap</span> a spine</span><span>click a cover to open →</span></div>
+    </section>
+
+    <div class="wrap">
+      <!-- explore: one big, obvious door into every section -->
+      <section style="margin-top:70px" aria-label="Explore Aera">
+        <div class="section-label"><h2>explore aera</h2><span class="mono muted">where do you want to go?</span></div>
+        <nav class="explore">
+          <a class="tile" href="stories.html" style="--tc:var(--cobalt);--tt:#fff" data-view="go →"><span class="t">Stories</span><span class="d">Editorials, trend reports, street style, interviews & school news.</span><span class="arrow">↗</span></a>
+          <a class="tile" href="gallery.html" style="--tc:var(--orange)" data-view="go →"><span class="t">Gallery</span><span class="d">Every photo from every shoot.</span><span class="arrow">↗</span></a>
+          <a class="tile" href="staff.html" style="--tc:var(--pink)" data-view="go →"><span class="t">Our Staff</span><span class="d">Meet the students who make Aera.</span><span class="arrow">↗</span></a>
+          <a class="tile" href="archive.html" style="--tc:var(--mustard)" data-view="go →"><span class="t">Issues</span><span class="d">Every issue since our debut in fall 2024.</span><span class="arrow">↗</span></a>
+          <a class="tile" href="about.html" style="--tc:var(--wine);--tt:var(--pink)" data-view="go →"><span class="t">About Us</span><span class="d">Our mission, our values and our story.</span><span class="arrow">↗</span></a>
+          <a class="tile" href="join.html" style="--tc:#D5F45A" data-view="go →"><span class="t">Join Us</span><span class="d">We’re a club too: join anytime, no experience needed.</span><span class="arrow">↗</span></a>
+        </nav>
+      </section>
+
+      <!-- plain list so nobody has to use the shelf -->
+      <section class="latest">
+        <div class="section-label"><h2>latest stories</h2><a class="mono" href="stories.html">all stories →</a></div>
+        <ol class="story-list" id="latest"></ol>
+      </section>
+
+      <section style="margin-top:90px">
+        <div class="section-label"><h2>from issue 05</h2><span class="mono muted">trend report</span></div>
+        <div id="feature"></div>
+      </section>
+    </div>
+
+    <!-- gallery teaser -->
+    <section style="margin-top:90px">
+      <div class="wrap"><div class="section-label"><h2>from the gallery</h2><a class="mono" href="gallery.html">enter the ring →</a></div></div>
+      <div class="marquee"><div class="marquee-track" id="marquee"></div></div>
+    </section>
+
+    <div class="wrap">
+      <section class="mission-strip">
+        <blockquote class="reveal">Not <em>any</em> fashion magazine. We tell stories where fashion meets <span class="marker">culture</span>, politics and environment.</blockquote>
+        <a class="join-card reveal" href="join.html" data-view="join →">
+          <span class="select-box"><i></i><span class="script">Join us</span></span>
+          <p>Aera is also a club at Paly, open to everyone. We meet every Thursday at lunch in Room 310 (language building).</p>
+          <p class="mono" style="margin-top:16px">join anytime →</p>
+        </a>
+      </section>
+
+      <section class="ig-block">
+        <span class="mono muted">follow along</span><br>
+        <a class="ig-handle" href="https://www.instagram.com/aerafashionmagazine/" target="_blank" rel="noopener">@aerafashionmagazine</a>
+        <div class="ig-grid" id="ig-grid"></div>
+        <div class="socials"><a href="https://www.instagram.com/aerafashionmagazine/" target="_blank" rel="noopener">instagram</a></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/shelf.js"></script>
+  <script>initShelf(document.getElementById('shelf'), AERA_BOOKS());</script>
+</body>
+</html>

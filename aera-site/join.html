@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join — Aera Magazine</title>
+  <meta name="description" content="Join Aera Magazine, submit your work, come to our events, or get in touch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Doto:wght@600&family=EB+Garamond:ital@0;1&family=Montserrat:wght@300;400&family=Pinyon+Script&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="join">
+  <div id="site-header"></div>
+  <main class="wrap">
+    <header style="padding:50px 0 10px">
+      <span class="kicker mono muted">get involved · submit · events · contact</span>
+      <h1 class="repeat-type" aria-label="Join us"><span>join us</span><span>join us</span><span>join us</span></h1>
+    </header>
+
+    <section class="join-grid" id="join">
+      <div class="reveal">
+        <div class="section-label"><h2>always open — join the club</h2><span class="mono" style="color:var(--magenta)">no deadline</span></div>
+        <p style="margin-top:0">Aera is also a club at Palo Alto High School, so you can join anytime during the school year. Come to a meeting, bring a friend, no experience needed.</p>
+        <ul class="roles">
+          <li>Writers <span class="mono muted">culture · politics · environment</span></li>
+          <li>Photographers <span class="mono muted">shoots &amp; behind the cameras</span></li>
+          <li>Models <span class="mono muted">everyone welcome</span></li>
+          <li>Designers <span class="mono muted">layout · illustration</span></li>
+        </ul>
+        <div class="section-label" style="margin:34px 0 0"><h2>leadership positions</h2></div>
+        <ul class="roles">
+          <li>Section editors <span class="mono muted">culture · politics · environment desk heads</span></li>
+          <li>Media manager <span class="mono muted">instagram &amp; content</span></li>
+          <li>Website manager <span class="mono muted">this site!</span></li>
+        </ul>
+        <p class="mono muted" style="margin-top:10px">★ detailed role descriptions are in the link in our <a href="https://www.instagram.com/aerafashionmagazine/" target="_blank" rel="noopener">instagram bio</a>.</p>
+        <p class="mono" style="margin-top:20px">club meetings: every thursday @ lunch · room 310 (language building)</p>
+        <p style="margin-top:20px"><a class="btn" href="#" data-view="join →">sign up to join ↗</a></p>
+      </div>
+      <div class="reveal" id="submit">
+        <div class="section-label"><h2>submit your work</h2></div>
+        <p>Art, outfit photos, poems, story pitches — send it in. Selected work is published online and in print, always credited.</p>
+        <form class="form">
+          <label><span class="mono">your name</span><input required></label>
+          <label><span class="mono">school email</span><input type="email" required></label>
+          <label><span class="mono">type</span><select><option>story pitch</option><option>outfit photo</option><option>artwork</option><option>writing</option></select></label>
+          <label><span class="mono">tell us about it</span><textarea rows="3"></textarea></label>
+          <button class="btn" style="justify-self:start">send it →</button>
+          <p class="mono muted" style="margin:0">by submitting you confirm the work is yours and everyone pictured agreed to be shown.</p>
+        </form>
+      </div>
+    </section>
+
+    <section style="margin-top:110px" id="events-section">
+      <div class="section-label"><h2>upcoming events</h2><span class="mono muted">launch parties · photo days · thrift swaps</span></div>
+      <div class="events" id="events"></div>
+    </section>
+
+    <section class="join-grid" style="margin-top:110px">
+      <div class="reveal" id="contact">
+        <div class="section-label"><h2>contact</h2></div>
+        <p style="font-family:var(--f-didone);font-size:32px;line-height:1.15;margin:0;overflow-wrap:anywhere">Say hi at <a href="mailto:aerafashionmagazine@gmail.com">aerafashionmagazine@gmail.com</a> or DM <a href="https://www.instagram.com/aerafashionmagazine/" target="_blank" rel="noopener">@aerafashionmagazine</a>.</p>
+        <p class="mono muted">faculty advisor: christianne resigner · french teacher · palo alto high school</p>
+        <p class="mono muted">sponsors & local ads: we’d love to work with you — email us for our rate sheet.</p>
+      </div>
+      <div class="reveal" id="policies">
+        <div class="section-label"><h2>policies</h2></div>
+        <div class="policy-list">
+          <details><summary>Editorial policy</summary><p>Aera is student-run. Students make all editorial decisions with guidance from our faculty advisor. TODO: add your school’s policy.</p></details>
+          <details><summary>Photo consent</summary><p>Everyone photographed agrees to be published. Students under 18 need a signed model release from a parent or guardian.</p></details>
+          <details><summary>Corrections</summary><p>Spotted a mistake? Email us and we’ll fix it and note the correction on the story.</p></details>
+          <details><summary>Accessibility</summary><p>We aim for WCAG AA. Every photo has alt text and every animation can be turned off with your device’s reduced-motion setting.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

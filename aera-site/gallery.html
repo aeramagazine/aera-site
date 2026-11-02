@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery — Aera Magazine</title>
+  <meta name="description" content="Photography from every Aera Magazine shoot.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Doto:wght@600&family=EB+Garamond:ital@0;1&family=Montserrat:wght@300;400&family=Pinyon+Script&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="gallery">
+  <div id="site-header"></div>
+  <main>
+    <header class="page-head" style="padding-bottom:24px">
+      <span class="kicker mono">photography from every shoot</span>
+      <h1 class="page-title">The <em>Ring</em></h1>
+    </header>
+
+    <section id="ring-view">
+      <div class="ring-frame">
+        <div class="panel-corners"><span>aera</span><span class="shoot-label">the gallery — every shoot</span></div>
+        <nav class="ring-sections" id="ring-sections" aria-label="Choose a shoot"></nav>
+        <div class="stage" id="stage">
+          <div class="ring-controls" aria-label="Play with the ring">
+            <div class="ring-label"><span id="ring-name">All Shoots</span><span class="mono" id="ring-count"></span></div>
+            <label><span>straight</span><input id="c-tilt" type="range" min="0" max="10" step=".1" value="0" aria-label="Card tilt"><span>tilted</span></label>
+            <label><span>small</span><input id="c-size" type="range" min=".7" max="1.35" step=".01" value="1" aria-label="Card size"><span>large</span></label>
+            <label><span>push</span><input id="c-push" type="range" min="0" max="1" step=".01" value=".4" aria-label="Spin easing"><span>linear</span></label>
+          </div>
+        </div>
+        <div class="panel-bottom"><span>drag to spin</span><span>click a colour card to enter a shoot</span><span>click a photo to open</span></div>
+      </div>
+    </section>
+
+    <section id="grid-view" class="wrap" hidden>
+      <div class="filters" id="shoot-filters" role="group" aria-label="Filter by shoot"></div>
+      <div class="masonry" id="masonry"></div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="top mono"><span class="lb-count"></span><button class="lb-close">close ✕</button></div>
+    <div class="stagebox"><img alt=""></div>
+    <div class="bottom mono"><button class="lb-prev">← prev</button><span class="lb-credits"></span><button class="lb-next">next →</button></div>
+  </div>
+  <div id="site-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/ring.js"></script>
+</body>
+</html>
