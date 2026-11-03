@@ -51,7 +51,7 @@ aera-site/
 
 1. **Add the photos.** Drop them into `assets/img/stories/`. Use simple names with no spaces, like `fall-fits-hero.jpg`. Landscape photos about 1600px wide work best.
 2. **Open `assets/js/data.js`** and find the `stories: [` list.
-3. **Copy the first story** (from `{ id: 'express-yourself-fully'` down to its closing `},`) and paste it at the **top** of the list. The top story is the newest one, so it shows first.
+3. **Copy the EXAMPLE story** (the lines starting with `//` inside `stories: [`), paste it at the **top** of the list, and delete the `//` at the start of each line. The top story is the newest one, so it shows first. While the list is empty, the site shows "stories coming soon" automatically.
 4. **Change the fields:**
 
 | Field | What it is | Example |
@@ -60,7 +60,7 @@ aera-site/
 | `title` | Headline | `'Fall Fits at Paly'` |
 | `poster` | The giant words in the hero. One line per item, short and CAPS. | `['FALL', 'FITS']` |
 | `dek` | One-sentence summary under the headline | `'What everyone wore in week one.'` |
-| `tag` | Category, used by the filter buttons. Use one of: `editorial`, `trend report`, `street style`, `interviews`, `school news`, `events`, `opinion` | `'street style'` |
+| `tag` | Which desk it belongs to (used by the filter buttons): `'fashion & culture'`, `'fashion & politics'` or `'fashion & environment'` | `'fashion & culture'` |
 | `author` | The writer's staff `id` (from the staff list) | `'priya'` |
 | `date` | Date shown on the story | `'Oct 20, 2026'` |
 | `read` | Minutes to read | `4` |

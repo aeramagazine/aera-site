@@ -15,11 +15,11 @@
   <div id="site-header"></div>
   <main>
     <header class="page-head">
-      <span class="kicker mono">every issue since fall 2024</span>
+      <span class="kicker mono">one issue every semester</span>
       <h1 class="page-title">The <em>Archive</em></h1>
     </header>
     <section class="shelf-panel" aria-label="Bookshelf of every issue">
-      <div class="panel-corners"><span>aera</span><span>issues 01 — 06</span><span>shelf</span></div>
+      <div class="panel-corners"><span>aera</span><span>one issue every semester</span><span>shelf</span></div>
       <div class="shelf" id="shelf"></div>
       <div class="shelf-hint mono muted"><span>drag the shelf · <span class="on-mouse">hover</span><span class="on-touch">tap</span> a spine</span><span>click a cover to read →</span></div>
     </section>
@@ -32,6 +32,6 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/shelf.js"></script>
-  <script>initShelf(document.getElementById("shelf"), AERA_BOOKS("issues").concat(AERA_BOOKS("issues")));</script>
+  <script>initShelf(document.getElementById("shelf"), AERA.issues.length >= 6 ? AERA_BOOKS("issues") : AERA_BOOKS());</script>
 </body>
 </html>

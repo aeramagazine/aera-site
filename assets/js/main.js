@@ -251,32 +251,52 @@
     const issueBooks = D.issues.map((is, i) => ({
       title: is.title, sub: `issue ${is.no}`, c: is.color, t: is.ink, font: ['f-didone', 'f-cond', 'f-spaced', 'f-dot', 'f-cond', 'f-script'][i],
       sw: 48 + Math.round(r() * 26), h: 230 + Math.round(r() * 50), href: `archive.html#${is.id}`, img: is.img,
-      cap: `issue ${is.no} — “${is.title}” — ${is.season}`, dot: is.current
+      cap: `issue ${is.no} — “${is.title}” — ${is.season}`, dot: is.current, coverText: is.img ? '' : `issue ${is.no}<br>coming soon`
     }));
     if (only === 'issues') return issueBooks;
     const storyBooks = D.stories.map((s, i) => ({
       title: s.title.replace(/[:?()]/g, '').split(' ').slice(0, 3).join(' '), sub: s.tag, c: s.color,
       t: ['#F4E21A', '#F2A7C3', '#EDE6D6'].includes(s.color) ? '#0B0B0B' : '#FFFFFF',
       font: fonts[(i + 2) % fonts.length], sw: 30 + Math.round(r() * 26), h: 180 + Math.round(r() * 80),
-      href: storyUrl(s), img: s.img.replace('1400/1000', '520/720'), cap: `${s.tag} — “${s.title}”`, dot: i % 3 === 0
+      href: storyUrl(s), img: (s.img || '').replace('1400/1000', '520/720'), cap: `${s.tag} — “${s.title}”`, dot: i % 3 === 0
     }));
+    const pic = shoot => (D.gallery.find(g => g.shoot === shoot) || D.gallery[0] || {}).src || '';
+    const deskBooks = [
+      { title: 'fashion & culture', sub: 'desk', c: '#E0218A', t: '#FFFFFF', font: 'f-didone', sw: 40, h: 252, href: 'stories.html', img: '', coverText: 'fashion &amp; culture<br>stories coming soon', cap: 'fashion & culture desk — stories coming soon' },
+      { title: 'fashion & politics', sub: 'desk', c: '#E5231B', t: '#FFFFFF', font: 'f-cond', sw: 46, h: 236, href: 'stories.html', img: '', coverText: 'fashion &amp; politics<br>stories coming soon', cap: 'fashion & politics desk — stories coming soon', dot: true },
+      { title: 'fashion & environment', sub: 'desk', c: '#1F6B3A', t: '#FFFFFF', font: 'f-mono', sw: 30, h: 266, href: 'stories.html', img: '', coverText: 'fashion &amp; environment<br>stories coming soon', cap: 'fashion & environment desk — stories coming soon' },
+      { title: 'fit checks', sub: 'gallery', c: '#F4E21A', t: '#0B0B0B', font: 'f-spaced', sw: 42, h: 214, href: 'gallery.html', img: pic('fit checks'), cap: 'fit checks — in the gallery' },
+      { title: 'in the magazine', sub: 'gallery', c: '#2433E8', t: '#FFFFFF', font: 'f-script', sw: 38, h: 246, href: 'gallery.html', img: pic('in the magazine'), cap: 'in the magazine — in the gallery' }
+    ];
     const sectionBooks = [
-      { title: 'the gallery', sub: 'photography', c: '#F0611E', t: '#0B0B0B', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: D.gallery[0].src, cap: 'the gallery — every shoot, every photo' },
+      { title: 'the gallery', sub: 'photography', c: '#F0611E', t: '#0B0B0B', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: (D.gallery[0] || {}).src || '', cap: 'the gallery — every shoot, every photo' },
       { title: 'masthead', sub: 'staff', c: '#EDE6D6', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt, cap: 'meet the staff' },
-      { title: 'Join Us', sub: 'open to all', c: '#D5F45A', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: D.gallery[5].src, cap: 'join aera — open all year' },
-      { title: 'our mission', sub: 'about', c: '#6E1E2B', t: '#F2A7C3', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: D.gallery[8].src, cap: 'about aera magazine' },
-      { title: 'PRINTABLE', sub: 'zine', c: '#E9EBC8', t: '#2433E8', font: 'f-spaced', sw: 46, h: 265, href: 'archive.html', img: D.gallery[11].src, cap: 'download our zines' }
+      { title: 'Join Us', sub: 'open to all', c: '#D5F45A', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: '', coverText: 'join us<br>open to all', cap: 'join aera — open all year' },
+      { title: 'our mission', sub: 'about', c: '#6E1E2B', t: '#F2A7C3', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
+      { title: 'ROOM 310', sub: 'thursdays @ lunch', c: '#E9EBC8', t: '#2433E8', font: 'f-spaced', sw: 46, h: 265, href: 'join.html', img: '', coverText: 'room 310<br>thursdays @ lunch', cap: 'come to a meeting — room 310, thursdays at lunch' }
     ];
     // interleave so colours mix nicely
-    const all = [], pools = [issueBooks, storyBooks, sectionBooks];
-    for (let i = 0; all.length < issueBooks.length + storyBooks.length + sectionBooks.length; i++) pools.forEach(p => p[i] && all.push(p[i]));
+    const all = [], pools = [issueBooks, deskBooks, storyBooks, sectionBooks], total = pools.reduce((n, p) => n + p.length, 0);
+    for (let i = 0; all.length < total; i++) pools.forEach(p => p[i] && all.push(p[i]));
     all.forEach((b, i) => { b.lean = i % 7 === 4; b.cw = Math.round(b.h * .72); });
     return all;
   };
 
+  // shown wherever stories would be, until the first real ones are added in data.js
+  function comingSoon(full) {
+    const desks = [['fashion & culture', 'var(--magenta)', 'Art, music, identity and the way we live.'],
+                   ['fashion & politics', 'var(--cherry)', 'How clothing carries power, protest and the issues of our time.'],
+                   ['fashion & environment', 'var(--forest)', 'Where our clothes come from, and how fashion can do better.']];
+    return `<div class="soon reveal${full ? ' soon-full' : ''}">
+      <p class="soon-lead">Our first stories are <em>in the works.</em></p>
+      <div class="soon-desks">${desks.map(([n, c, d]) => `<div class="soon-desk" style="--dc:${c}"><span class="mono">${n}</span><p>${d}</p><span class="mono muted">coming soon</span></div>`).join('')}</div>
+      <p class="mono soon-cta"><a href="join.html#submit">have an idea? pitch a story →</a> &nbsp; · &nbsp; <a href="${D.instagram}" target="_blank" rel="noopener">follow ${D.handle} for updates ↗</a></p>
+    </div>`;
+  }
+
   /* ---------------- page: home ---------------- */
   if (page === 'home') {
-    $('#latest').innerHTML = D.stories.slice(0, 6).map((s, i) => `
+    $('#latest').innerHTML = !D.stories.length ? `<li>${comingSoon()}</li>` : D.stories.slice(0, 6).map((s, i) => `
       <li class="story-row reveal"><a href="${storyUrl(s)}" style="--row-c:${s.color === '#0B0B0B' ? 'var(--magenta)' : s.color}">
         <span class="n mono">${String(i + 1).padStart(2, '0')}</span>
         <span class="mono muted">${s.tag}</span>
@@ -286,11 +306,15 @@
         <img class="thumb" src="${s.img.replace('1400/1000', '300/400')}" alt="" loading="lazy">
       </a></li>`).join('');
 
-    const f = D.stories.find(s => s.id === 'y2k-is-not-over');
-    $('#feature').innerHTML = `
+    const f = D.stories[0];
+    $('#feature').innerHTML = f ? `
       <a class="poster-block reveal" href="${storyUrl(f)}" style="--pc:${f.color}; --img:url('${f.img}')" data-view="read →">
-        <h2 class="photo-type">${f.poster.map(l => `<span>${l}</span>`).join('')}</h2>
+        <h2 class="photo-type">${(f.poster || [f.title]).map(l => `<span>${l}</span>`).join('')}</h2>
         <div class="poster-meta mono"><span>${f.tag} — issue ${f.issue}</span><span>${f.title.toLowerCase()} →</span></div>
+      </a>` : `
+      <a class="poster-block reveal" href="join.html#submit" style="--pc:var(--magenta); --img:url('${(D.gallery[2] || {}).src || ''}')" data-view="pitch →">
+        <h2 class="photo-type"><span>STORIES</span><span>COMING</span><span>SOON</span></h2>
+        <div class="poster-meta mono"><span>issue 01 — in the works</span><span>have an idea? pitch a story →</span></div>
       </a>`;
 
     const r = rng(9);
@@ -308,13 +332,16 @@
   }
 
   /* ---------------- page: stories index ---------------- */
-  if (page === 'stories') {
+  if (page === 'stories' && !D.stories.length) {
+    $('#filters').remove();
+    $('#story-grid').outerHTML = comingSoon(true);
+  } else if (page === 'stories') {
     const tags = ['all', ...new Set(D.stories.map(s => s.tag))];
     const fl = $('#filters');
     fl.innerHTML = tags.map(t => `<button class="chip" aria-pressed="${t === 'all'}" data-tag="${t}">${t}</button>`).join('');
     $('#story-grid').innerHTML = D.stories.map(s => `
       <a class="story-card reveal" href="${storyUrl(s)}" data-tag="${s.tag}" style="--c:${s.color}" data-view="read →">
-        <div class="img"><img src="${s.img.replace('1400/1000', '700/875')}" alt="" loading="lazy"><span class="big-letter" aria-hidden="true">${s.title[0]}</span></div>
+        <div class="img"><img src="${(s.img || '').replace('1400/1000', '700/875')}" alt="" loading="lazy"><span class="big-letter" aria-hidden="true">${s.title[0]}</span></div>
         <div class="meta mono"><span>${s.tag}</span><span class="muted">${s.date.toLowerCase()} · ${s.read} min</span></div>
         <h3>${s.title}</h3>
         <p>${s.dek}</p>
@@ -328,7 +355,10 @@
   }
 
   /* ---------------- page: single story ---------------- */
-  if (page === 'story') {
+  if (page === 'story' && !D.stories.some(s => s.id === new URLSearchParams(location.search).get('id'))) {
+    document.title = 'Coming soon — Aera Magazine';
+    $('#article').innerHTML = `<header class="page-head"><span class="kicker mono">stories</span><h1 class="page-title">Coming <em>soon</em></h1></header><div class="wrap">${comingSoon(true)}</div>`;
+  } else if (page === 'story') {
     const id = new URLSearchParams(location.search).get('id');
     const idx = Math.max(0, D.stories.findIndex(s => s.id === id));
     const s = D.stories[idx], next = D.stories[(idx + 1) % D.stories.length];
@@ -421,8 +451,8 @@
   /* ---------------- page: archive ---------------- */
   if (page === 'archive') {
     $('#issues').innerHTML = D.issues.map(is => `
-      <a class="issue-card reveal" id="${is.id}" href="#${is.id}" style="--c:${is.color}" data-view="read →">
-        <div class="cv"><img src="${is.img}" alt="Cover of issue ${is.no}" loading="lazy"><span class="mast">AERA</span></div>
+      <a class="issue-card reveal" id="${is.id}" href="#${is.id}" style="--c:${is.color}" data-view="${is.img ? 'read →' : 'soon'}">
+        <div class="cv">${is.img ? `<img src="${is.img}" alt="Cover of issue ${is.no}" loading="lazy">` : `<span class="cv-soon mono">issue ${is.no}<br>coming soon</span>`}<span class="mast">AERA</span></div>
         <div class="mono muted" style="margin-top:12px">issue ${is.no} · ${is.season}${is.current ? ' · <span style="color:var(--magenta)">current</span>' : ''}</div>
         <h3>${is.title}</h3><p>${is.blurb}</p>
       </a>`).join('');
