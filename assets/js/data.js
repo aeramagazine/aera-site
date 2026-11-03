@@ -30,62 +30,27 @@ window.AERA = {
     // { img: 'assets/img/instagram/post-1.jpg', url: 'https://www.instagram.com/p/XXXXXXXX/' },
   ],
 
+  // Newest issue first. Only one should have current: true.
+  // While an issue has no cover photo yet (img: ''), it shows a "coming soon" cover.
   issues: [
-    { id: 'issue-06', no: '06', title: 'soft armor',    season: 'fall 2026',   color: '#F2A7C3', ink: '#0B0B0B', img: IMG('i6', 520, 720), current: true,
-      blurb: 'On dressing like protection: padded shoulders, knitwear, and the comfort of a good coat.' },
-    { id: 'issue-05', no: '05', title: 'internal riot', season: 'spring 2026', color: '#E0218A', ink: '#FFFFFF', img: IMG('i5', 520, 720),
-      blurb: 'Loud colour, louder opinions. Our most rebellious issue yet.' },
-    { id: 'issue-04', no: '04', title: 'blue hour',     season: 'winter 2025', color: '#2433E8', ink: '#FFFFFF', img: IMG('i4', 520, 720),
-      blurb: 'Shot entirely between 4 and 5pm in December light.' },
-    { id: 'issue-03', no: '03', title: 'thrift theory', season: 'fall 2025',   color: '#E7A71C', ink: '#0B0B0B', img: IMG('i3', 520, 720),
-      blurb: 'Every look in this issue cost under $20.' },
-    { id: 'issue-02', no: '02', title: 'uniform',       season: 'spring 2025', color: '#2A2A2A', ink: '#F4F1EA', img: IMG('i2', 520, 720, true),
-      blurb: 'Fifty ways to wear the same thing.' },
-    { id: 'issue-01', no: '01', title: 'first light',   season: 'fall 2024',   color: '#EDE6D6', ink: '#0B0B0B', img: IMG('i1', 520, 720),
-      blurb: 'Where it all started. Our debut issue.' }
+    { id: 'issue-01', no: '01', title: 'coming soon', season: 'in the works', color: '#F2A7C3', ink: '#0B0B0B', img: '', current: true,
+      blurb: 'Our first issue is in the works: stories on fashion & culture, fashion & politics and fashion & environment.' }
   ],
 
+  // Articles, newest first. While this list is empty the site shows "stories coming soon".
+  // To add one, copy the EXAMPLE below, remove the // at the start of each line, and fill it in.
+  // Desks: 'fashion & culture', 'fashion & politics', 'fashion & environment'
   stories: [
-    { id: 'express-yourself-fully', title: 'Express Yourself Fully', poster: ['EXPRESS', 'YOURSELF', 'FULLY'],
-      dek: 'Six students, six rooms, one rule: wear exactly what you want.', tag: 'editorial', author: 'mira',
-      date: 'Oct 02, 2026', read: 6, layout: 'poster', color: '#2433E8', img: IMG('s1', 1400, 1000), issue: '06',
-      quote: 'I stopped dressing for the hallway and started dressing for me.',
-      // ↓ EXAMPLE of a story with its own text + credits. Copy this pattern for real articles.
-      body: [
-        'We asked six Paly students one question: if nobody was watching, what would you wear to school tomorrow? Then we asked them to actually wear it.',
-        'The results ranged from a hand-painted denim jacket to a full suit borrowed from a grandfather’s closet. Every outfit came with a story.',
-        '“I used to plan my outfits around what wouldn’t get noticed,” one senior told us. “This semester I flipped it.”',
-        'Placeholder: replace these paragraphs with the real article. Each line in quotes is one paragraph — add as many as you need.'
-      ],
-      credits: { photography: 'Theo Lindqvist', styling: 'Wren Callahan', models: 'Sasha P., Jordan L.', mua: 'Ines R.' } },
-    { id: 'fit-check-hallway', title: 'Fit Check: Hallway Edition', poster: ['FIT', 'CHECK'],
-      dek: 'Our photographers spent a week stopping people between classes.', tag: 'street style', author: 'theo',
-      date: 'Sep 26, 2026', read: 3, layout: 'collage', color: '#F4E21A', img: IMG('s2', 1400, 1000), issue: '06',
-      quote: 'Best accessory? My grandma’s brooch. Every day.' },
-    { id: 'thrift-swap-report', title: 'The Great Thrift Swap', poster: ['THE GREAT', 'THRIFT SWAP'],
-      dek: '412 items in, 389 items out. A report from the gym floor.', tag: 'school news', author: 'eli',
-      date: 'Sep 19, 2026', read: 4, layout: 'spread', color: '#E5231B', img: IMG('s3', 1400, 1000), issue: '06',
-      quote: 'Someone left in a full vintage suit. We are still not over it.' },
-    { id: 'y2k-is-not-over', title: 'Is Y2K Over? (No.)', poster: ['INTERNAL', 'RIOT', 'FAILURE'],
-      dek: 'A trend report on low-rise denim, butterfly clips and our refusal to move on.', tag: 'trend report', author: 'priya',
-      date: 'Sep 12, 2026', read: 5, layout: 'poster', color: '#E0218A', img: IMG('s4', 1400, 1000), issue: '05',
-      quote: 'Trends don’t die at our school. They just get a little more personal.' },
-    { id: 'art-room-interview', title: 'Ten Minutes in the Art Room', poster: ['THE ART', 'ROOM'],
-      dek: 'In conversation with the teacher who keeps a rack of costumes behind the kiln.', tag: 'interviews', author: 'june',
-      date: 'Sep 05, 2026', read: 7, layout: 'spread', color: '#1F6B3A', img: IMG('s5', 1400, 1000), issue: '05',
-      quote: 'Getting dressed is the first creative decision you make every day.' },
-    { id: 'soft-armor-bts', title: 'Soft Armor: Behind the Shoot', poster: ['SOFT', 'ARMOR'],
-      dek: 'Padded coats, borrowed knits and a very cold Saturday on the football field.', tag: 'editorial', author: 'ava',
-      date: 'Aug 29, 2026', read: 5, layout: 'collage', color: '#F2A7C3', img: IMG('s6', 1400, 1000), issue: '06',
-      quote: 'We wanted it to feel like a hug you could wear.' },
-    { id: 'issue-06-launch', title: 'Launch Party: Issue 06', poster: ['LAUNCH', 'NIGHT'],
-      dek: 'Zines, a DJ from the senior class and a runway down the library aisle.', tag: 'events', author: 'noor',
-      date: 'Aug 22, 2026', read: 2, layout: 'spread', color: '#6E1E2B', img: IMG('s7', 1400, 1000), issue: '06',
-      quote: 'Best night of the semester, and it was in the library.' },
-    { id: 'dress-up-tuesday', title: 'In Defense of Dressing Up on a Tuesday', poster: ['JE T’AIME', 'JE T’AIME', 'JE T’AIME'],
-      dek: 'An opinion: there is no such thing as overdressed for algebra.', tag: 'opinion', author: 'sol',
-      date: 'Aug 15, 2026', read: 3, layout: 'poster', color: '#0B0B0B', img: IMG('s8', 1400, 1000), issue: '06',
-      quote: 'Overdressed is just a word people use when they’re jealous.' }
+    // { id: 'my-first-story', title: 'My First Story', poster: ['MY FIRST', 'STORY'],
+    //   dek: 'One sentence that sums up the story.', tag: 'fashion & culture', author: 'mira',
+    //   date: 'Dec 01, 2026', read: 4, layout: 'spread', color: '#E0218A', issue: '01',
+    //   img: 'assets/img/stories/my-first-story.jpg', photo2: 'assets/img/stories/my-first-story-2.jpg',
+    //   quote: 'A line from the story worth making huge.',
+    //   body: [
+    //     'First paragraph.',
+    //     'Second paragraph.'
+    //   ],
+    //   credits: { photography: 'Name', styling: 'Name', models: 'Name', mua: 'Name' } },
   ],
   body: BODY,
 
@@ -144,6 +109,6 @@ window.AERA = {
   events: [
     { date: 'Oct 24', title: 'Fit Check Photo Day', where: 'Main quad · lunch', note: 'Wear your best. We’ll be shooting all period.' },
     { date: 'Nov 07', title: 'Winter Thrift Swap', where: 'Gym · 3:30pm', note: 'Bring up to 5 items, take up to 5 items.' },
-    { date: 'Dec 12', title: 'Issue 07 Launch Party', where: 'Library · 6pm', note: 'Zines, music, a tiny runway. RSVP below.' }
+    { date: 'Dec 12', title: 'Issue 01 Launch Party', where: 'Library · 6pm', note: 'Zines, music, a tiny runway. RSVP below.' }
   ]
 };

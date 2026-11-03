@@ -25,7 +25,7 @@ window.initShelf = function (el, books) {
     a.innerHTML = `
       <div class="book-3d">
         <div class="spine">${b.dot ? '<span class="dotmark"></span>' : '<span></span>'}<span class="spine-title">${b.title}</span><span class="spine-sub">${b.sub}</span></div>
-        <div class="cover"><img src="${b.img}" alt="" loading="lazy" draggable="false"><span class="mast">AERA</span><span class="cap">${b.cap}</span></div>
+        <div class="cover">${b.img ? `<img src="${b.img}" alt="" loading="lazy" draggable="false">` : `<span class="cover-blank">${b.coverText || 'coming soon'}</span>`}<span class="mast">AERA</span><span class="cap">${b.cap}</span></div>
       </div>`;
     el.appendChild(a);
     return { el: a, b, w: b.sw, target: b.sw, x: 0 };
