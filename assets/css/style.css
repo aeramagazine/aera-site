@@ -31,6 +31,7 @@
   /* brushed-metal purple for the AERA logo; the bright one is for dark backgrounds */
   --metal: linear-gradient(180deg, #45022C 0%, #7A0B4D 24%, #C46A99 40%, #8C1A5C 52%, #5C0439 70%, #9A3069 88%, #4A0330 100%);
   --metal-bright: linear-gradient(180deg, #8C1A5C 0%, #B8447F 26%, #F0B6D2 41%, #B0407A 54%, #84155A 72%, #C25C92 88%, #8C1A5C 100%);
+  --metal-hover: linear-gradient(180deg, #5E6670 0%, #B9C2CC 22%, #FFFFFF 40%, #A7B0BA 54%, #6C747E 72%, #D5DCE3 88%, #6A727C 100%);   /* chrome: AERA letters you slide over */
   --issue: var(--pink);          /* current issue colour — re-theme per issue */
 
   --f-brand: 'Onyx', 'Bodoni Moda', Georgia, serif;   /* AERA logo font: only for the word AERA */
@@ -195,7 +196,7 @@ body::after {
   display: inline-flex;
 }
 .wordmark span { background: var(--metal); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .3s, font-family 0s; }
-.wordmark span:hover { transform: translateY(-.12em) rotate(-8deg); color: var(--magenta); font-family: var(--f-script); }
+.wordmark span:hover, .wordmark span.lit { transform: translateY(-.12em) rotate(-8deg); background: var(--metal-hover); -webkit-background-clip: text; background-clip: text; font-family: var(--f-script); }
 .hero-sub { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; align-items: center; }
 .hero-sub .mono { color: var(--muted); }
 

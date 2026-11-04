@@ -197,6 +197,15 @@
     }, { passive: true });
   }
 
+  /* ---------------- AERA wordmark: letters light up as a finger slides over them ---------------- */
+  const wm = $('.wordmark');
+  if (wm) wm.addEventListener('touchmove', e => {
+    const t = e.touches[0], el = document.elementFromPoint(t.clientX, t.clientY);
+    if (!el || el.parentElement !== wm) return;
+    el.classList.add('lit');
+    clearTimeout(el._lit); el._lit = setTimeout(() => el.classList.remove('lit'), 700);
+  }, { passive: true });
+
   /* ---------------- reveal on scroll ---------------- */
   function initReveal() {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
