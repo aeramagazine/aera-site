@@ -19,7 +19,7 @@
   --pink: #F2A7C3;
   --butter: #E9EBC8;
   --cobalt: #2433E8;
-  --magenta: #E0218A;
+  --magenta: #700745;
   --cherry: #E5231B;
   --yellow: #F4E21A;
   --wine: #6E1E2B;
@@ -29,7 +29,8 @@
 
   --issue: var(--pink);          /* current issue colour — re-theme per issue */
 
-  --f-brand: 'Onyx', 'Bodoni Moda', Georgia, serif;   /* AERA brand font */
+  --f-brand: 'Onyx', 'Bodoni Moda', Georgia, serif;   /* AERA logo font: only for the word AERA */
+  --f-title: 'Bodoni Moda', 'Didot', Georgia, serif;  /* big titles + headings (placeholder until the team picks a font) */
   --f-display: 'Montserrat', system-ui, sans-serif;
   --f-mono: 'Space Mono', ui-monospace, monospace;
   --f-dot: 'Doto', 'Space Mono', monospace;
@@ -139,7 +140,7 @@ body::after {
   text-decoration: none; border-bottom: 1px solid #ffffff1f; padding: 2px 0;
 }
 .menu-links small { font-family: var(--f-mono); font-size: 12px; color: #ffffff70; }
-.menu-links span { font-family: var(--f-brand); text-transform: uppercase; font-size: clamp(44px, 9.5vh, 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.menu-links span { font-family: var(--f-title); text-transform: uppercase; font-size: clamp(44px, 9.5vh, 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
 .menu-links em { font-family: var(--f-mono); font-style: normal; font-size: 12px; color: var(--hc); opacity: 0; transform: translateX(-10px); transition: opacity .25s, transform .3s; }
 .menu-links a:hover span, .menu-links a:focus-visible span, .menu-links a[aria-current="page"] span { color: var(--hc); }
 .menu-links a:hover span { transform: translateX(14px); }
@@ -205,10 +206,11 @@ body::after {
 .panel-corners { position: absolute; inset: 12px 16px auto; display: flex; justify-content: space-between; z-index: 2; }
 .panel-corners span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .shelf-title {
-  font-family: var(--f-brand); font-weight: 400;
+  font-family: var(--f-title); font-weight: 400;
   font-size: clamp(48px, 8vw, 116px); line-height: .9;
   text-align: center; margin: 26px 0 0; letter-spacing: -.01em;
 }
+.aera-word { font-family: var(--f-brand); }
 .shelf-title em, .page-title em { font-family: var(--f-didone); font-style: italic; color: var(--magenta); font-size: .82em; }
 .shelf {
   position: relative;
@@ -342,9 +344,7 @@ body::after {
 .cutout:hover .cap { opacity: 1; }
 
 /* ---------- mission / join strip ---------- */
-.mission-strip { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; margin-top: 90px; align-items: end; }
-.mission-strip blockquote { margin: 0; font-family: var(--f-didone); font-size: clamp(28px, 3.6vw, 54px); line-height: 1.08; }
-.mission-strip blockquote em { color: var(--magenta); }
+.mission-strip { display: grid; grid-template-columns: minmax(0, 560px); gap: 40px; margin-top: 90px; align-items: end; }
 .join-card {
   border: 1px solid var(--ink); padding: 26px; position: relative; text-decoration: none; display: block;
   transition: background .3s, color .3s;
@@ -398,7 +398,7 @@ body::after {
 .page-head { padding: 60px var(--gutter) 40px; text-align: center; }
 .page-head .kicker { display: block; margin-bottom: 18px; color: var(--muted); }
 .page-title {
-  font-family: var(--f-brand); font-weight: 400;
+  font-family: var(--f-title); font-weight: 400;
   font-size: clamp(76px, 15vw, 240px); line-height: .86; margin: 0; letter-spacing: 0;
 }
 
@@ -473,16 +473,8 @@ body::after {
 .next-story .t { font-family: var(--f-didone); font-size: clamp(40px, 7vw, 110px); line-height: 1; display: block; margin-top: 12px; transition: color .3s; }
 .next-story:hover .t { color: var(--magenta); }
 
-/* hand-drawn marker scribble */
-.marker { position: relative; display: inline-block; }
-.marker svg { position: absolute; left: -12%; top: -24%; width: 124%; height: 148%; overflow: visible; pointer-events: none; z-index: 0; }
-.marker svg path { fill: none; stroke: var(--cherry); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
-
 /* ---------- about ---------- */
-.mission-big { max-width: 1100px; margin: 0 auto; padding: 20px var(--gutter) 0; text-align: center; font-family: var(--f-didone); font-size: clamp(30px, 4.4vw, 64px); line-height: 1.1; }
-.mission-big em { color: var(--magenta); }
-.divider { display: block; width: min(420px, 70%); margin: 80px auto; height: auto; }
-.divider path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.divider { display: block; height: 0; margin: 80px auto; }
 .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); }
 .value { padding: 24px 20px 40px; border-right: 1px solid var(--line); position: relative; overflow: hidden; min-height: 280px; }
 .value:last-child { border-right: 0; }
@@ -680,12 +672,12 @@ body::after {
 .ring-sections button i { width: 9px; height: 9px; display: inline-block; border: 1px solid #0003; }
 .ring-sections button:hover, .ring-sections button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .ring-label { text-align: center; margin-bottom: 14px; display: grid; gap: 2px; }
-.ring-label #ring-name { font-family: var(--f-brand); font-size: clamp(34px, 4.4vw, 60px); line-height: .9; text-transform: uppercase; letter-spacing: .02em; }
+.ring-label #ring-name { font-family: var(--f-title); font-size: clamp(34px, 4.4vw, 60px); line-height: .9; text-transform: uppercase; letter-spacing: .02em; }
 .card.type.t-section, .card.type.t-back {
   display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
   padding: 10px; text-align: left; cursor: pointer; border: 1px solid #0002;
 }
-.card .sec-name { font-family: var(--f-brand); font-size: calc(var(--cw) * .26); line-height: .9; text-transform: uppercase; }
+.card .sec-name { font-family: var(--f-title); font-size: calc(var(--cw) * .26); line-height: .9; text-transform: uppercase; }
 .card .sec-count { font-family: var(--f-mono); font-size: 10px; }
 .card.type.t-back { background: var(--paper); color: var(--ink); border: 1px solid var(--ink); }
 @media (max-width: 700px) {
@@ -699,7 +691,7 @@ body::after {
 
 /* ---------- coming soon ---------- */
 .soon { border-top: 1px solid var(--ink); padding: 34px 0 10px; }
-.soon-lead { font-family: var(--f-brand); font-size: clamp(36px, 5vw, 72px); line-height: .95; margin: 0 0 30px; }
+.soon-lead { font-family: var(--f-title); font-size: clamp(36px, 5vw, 72px); line-height: .95; margin: 0 0 30px; }
 .soon-lead em { font-family: var(--f-didone); color: var(--magenta); }
 .soon-desks { display: grid; grid-template-columns: repeat(3, 1fr); border-left: 1px solid var(--ink); }
 .soon-desk { border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); border-top: 8px solid var(--dc); padding: 16px 18px 18px; display: grid; gap: 10px; }

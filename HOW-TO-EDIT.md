@@ -118,7 +118,7 @@ In `data.js`, find `staff: [`. Copy one person and change it:
 In `data.js`, find `issues: [`. Add the newest at the **top**:
 
 ```js
-{ id: 'issue-07', no: '07', title: 'your theme', season: 'spring 2027', color: '#E0218A', ink: '#FFFFFF',
+{ id: 'issue-07', no: '07', title: 'your theme', season: 'spring 2027', color: '#700745', ink: '#FFFFFF',
   img: 'assets/img/issues/issue-07-cover.jpg', current: true,
   blurb: 'One line about the issue.' },
 ```
@@ -186,13 +186,13 @@ Open `assets/css/style.css`. At the very top is a list like:
 
 ```css
 --pink: #F2A7C3;
---magenta: #E0218A;
+--magenta: #700745;   /* the purple accent */
 --cobalt: #2433E8;
 ```
 
 Change a hex code there and it changes everywhere on the site.
 
-**Brand font:** our brand font **Onyx** is stored in `assets/fonts/OPTIOnyx.otf` and is set by the `--f-brand` line in that same list. It's used for the logo, the big AERA wordmark, the magazine-cover mastheads and the large page titles. To use it somewhere else, give that text `font-family: var(--f-brand);`. To pick colours, search "color picker" on Google and copy the `#hex` code.
+**Fonts:** our brand font **Onyx** (`assets/fonts/OPTIOnyx.otf`, the `--f-brand` line) is used **only for the word AERA**: the logo, the big AERA on the home page, cover mastheads and the footer. To show "Aera" in Onyx inside a title, wrap it like `<span class="aera-word">Aera</span>`. Big titles and headings use `--f-title` (Bodoni Moda for now). Change that one line to switch every title font at once. To pick colours, search "color picker" on Google and copy the `#hex` code.
 
 ---
 

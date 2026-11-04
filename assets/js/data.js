@@ -43,7 +43,7 @@ window.AERA = {
   stories: [
     // { id: 'my-first-story', title: 'My First Story', poster: ['MY FIRST', 'STORY'],
     //   dek: 'One sentence that sums up the story.', tag: 'fashion & culture', author: 'mira',
-    //   date: 'Dec 01, 2026', read: 4, layout: 'spread', color: '#E0218A', issue: '01',
+    //   date: 'Dec 01, 2026', read: 4, layout: 'spread', color: '#700745', issue: '01',
     //   img: 'assets/img/stories/my-first-story.jpg', photo2: 'assets/img/stories/my-first-story-2.jpg',
     //   quote: 'A line from the story worth making huge.',
     //   body: [

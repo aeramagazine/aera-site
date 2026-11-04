@@ -197,43 +197,6 @@
     }, { passive: true });
   }
 
-  /* ---------------- marker scribbles + dividers ---------------- */
-  function scribble(seed) {
-    const r = rng(seed), pts = [];
-    for (let th = -.4; th < Math.PI * 2 + .7; th += .18) {
-      pts.push([50 + Math.cos(th) * (47 + (r() - .5) * 3), 50 + Math.sin(th) * (44 + (r() - .5) * 3) + th * 1.6 - 5]);
-    }
-    return smooth(pts);
-  }
-  function initMarkers(root = document) {
-    $$('.marker', root).forEach((m, i) => {
-      if ($('svg', m)) return;
-      m.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path vector-effect="non-scaling-stroke" d="${scribble(i + 3)}"/></svg>`);
-      const p = $('path', m), len = p.getTotalLength();
-      p.style.strokeDasharray = len; p.style.strokeDashoffset = reduced ? 0 : len;
-      new IntersectionObserver(([e], o) => {
-        if (!e.isIntersecting) return;
-        p.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(.6,.1,.2,1) .2s';
-        p.style.strokeDashoffset = 0; o.disconnect();
-      }, { threshold: .6 }).observe(m);
-    });
-  }
-  function initDividers() {
-    $$('svg.divider').forEach((svg, i) => {
-      const r = rng(20 + i), pts = [];
-      for (let x = 0; x <= 400; x += 6) {
-        const loop = Math.abs(x - 200) < 26;
-        pts.push(loop ? [200 + Math.cos((x - 174) / 52 * Math.PI * 2) * 22, 30 + Math.sin((x - 174) / 52 * Math.PI * 2) * 18]
-                      : [x, 30 + Math.sin(x / 22) * 6 + (r() - .5) * 2]);
-      }
-      svg.setAttribute('viewBox', '0 0 400 60');
-      svg.innerHTML = `<path d="${smooth(pts)}"/>`;
-      const p = $('path', svg), len = p.getTotalLength();
-      p.style.strokeDasharray = len; p.style.strokeDashoffset = reduced ? 0 : len;
-      new IntersectionObserver(([e], o) => { if (e.isIntersecting) { p.style.transition = 'stroke-dashoffset 2s ease'; p.style.strokeDashoffset = 0; o.disconnect(); } }, { threshold: .5 }).observe(svg);
-    });
-  }
-
   /* ---------------- reveal on scroll ---------------- */
   function initReveal() {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
@@ -262,7 +225,7 @@
     }));
     const pic = shoot => (D.gallery.find(g => g.shoot === shoot) || D.gallery[0] || {}).src || '';
     const deskBooks = [
-      { title: 'fashion & culture', sub: 'desk', c: '#E0218A', t: '#FFFFFF', font: 'f-didone', sw: 40, h: 252, href: 'stories.html', img: '', coverText: 'fashion &amp; culture<br>stories coming soon', cap: 'fashion & culture desk — stories coming soon' },
+      { title: 'fashion & culture', sub: 'desk', c: '#700745', t: '#FFFFFF', font: 'f-didone', sw: 40, h: 252, href: 'stories.html', img: '', coverText: 'fashion &amp; culture<br>stories coming soon', cap: 'fashion & culture desk — stories coming soon' },
       { title: 'fashion & politics', sub: 'desk', c: '#E5231B', t: '#FFFFFF', font: 'f-cond', sw: 46, h: 236, href: 'stories.html', img: '', coverText: 'fashion &amp; politics<br>stories coming soon', cap: 'fashion & politics desk — stories coming soon', dot: true },
       { title: 'fashion & environment', sub: 'desk', c: '#1F6B3A', t: '#FFFFFF', font: 'f-mono', sw: 30, h: 266, href: 'stories.html', img: '', coverText: 'fashion &amp; environment<br>stories coming soon', cap: 'fashion & environment desk — stories coming soon' },
       { title: 'fit checks', sub: 'gallery', c: '#F4E21A', t: '#0B0B0B', font: 'f-spaced', sw: 42, h: 214, href: 'gallery.html', img: pic('fit checks'), cap: 'fit checks — in the gallery' },
@@ -383,7 +346,7 @@
           <div><h1>${s.title}</h1><p class="dek">${s.dek}</p></div>
         </div></div>`;
     } else {
-      const tints = ['#E5231B', '#F4E21A', '#2433E8', '#E0218A', '#F2A7C3', '#1F6B3A', '#F0611E', '#9EE6F0', '#D5F45A'];
+      const tints = ['#E5231B', '#F4E21A', '#2433E8', '#700745', '#F2A7C3', '#1F6B3A', '#F0611E', '#9EE6F0', '#D5F45A'];
       const r = rng(idx + 5);
       const letters = s.title.replace(/[^a-z]/gi, '').slice(0, 9).split('').map(ch =>
         `<span style="left:${Math.round(r() * 90)}%;top:${Math.round(r() * 80)}%;font-size:${60 + Math.round(r() * 160)}px;transform:rotate(${Math.round((r() - .5) * 30)}deg)">${ch}</span>`).join('');
@@ -393,7 +356,7 @@
           ${tints.map((t, i) => `<div style="background-color:${t};background-position:${(i % 3) * 50}% ${Math.floor(i / 3) * 50}%"></div>`).join('')}
           <span class="star" style="left:-24px;top:-24px"></span><span class="star" style="right:-20px;bottom:-26px;background:var(--magenta)"></span>
         </div>
-        <h1><span class="marker">${s.title}</span></h1>
+        <h1>${s.title}</h1>
         <p class="dek">${s.dek}</p></div>`;
     }
 
@@ -403,7 +366,6 @@
     const split = Math.ceil(body.length * .6);
     const paras = list => list.map(p => `<p>${p}</p>`).join('');
     const cr = Object.assign({ photography: '', styling: '', models: '', mua: '' }, s.credits);
-    const qWords = s.quote.split(' '), qLast = qWords.pop();
     $('#article').innerHTML = `
       ${hero}
       <div class="article-meta mono">
@@ -413,7 +375,7 @@
         <span>${s.read} min read</span>
       </div>
       <div class="article-body reveal"><div class="cols">${paras(body.slice(0, split))}</div></div>
-      <div class="pull reveal"><blockquote>“${qWords.join(' ')} <span class="marker">${qLast}</span>”</blockquote></div>
+      <div class="pull reveal"><blockquote>“${s.quote}”</blockquote></div>
       <figure class="full-bleed reveal" style="margin-inline:0">
         <img src="${s.photo2 || s.img.replace('1400/1000', '1600/1000').replace('aera-s', 'aera-x')}" alt="${s.photo2Alt || ''}" loading="lazy">
         <span class="side-text mono">aera — issue ${s.issue}</span>
@@ -424,7 +386,6 @@
         <span class="mono muted">next story</span>
         <span class="t" style="--pc:${accent}">${next.title} →</span>
       </a>`;
-    initMarkers();
   }
 
   /* ---------------- page: staff ---------------- */
@@ -605,7 +566,5 @@
     addEventListener('resize', () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawTextures, 250); });
   }
 
-  initMarkers();
-  initDividers();
   initReveal();
 })();
