@@ -27,6 +27,10 @@
   --orange: #F0611E;
   --mustard: #E7A71C;
 
+  --logo: #700745;               /* AERA logo colour (purple) */
+  /* brushed-metal purple for the AERA logo; the bright one is for dark backgrounds */
+  --metal: linear-gradient(180deg, #45022C 0%, #7A0B4D 24%, #C46A99 40%, #8C1A5C 52%, #5C0439 70%, #9A3069 88%, #4A0330 100%);
+  --metal-bright: linear-gradient(180deg, #8C1A5C 0%, #B8447F 26%, #F0B6D2 41%, #B0407A 54%, #84155A 72%, #C25C92 88%, #8C1A5C 100%);
   --issue: var(--pink);          /* current issue colour — re-theme per issue */
 
   --f-brand: 'Onyx', 'Bodoni Moda', Georgia, serif;   /* AERA logo font: only for the word AERA */
@@ -131,7 +135,7 @@ body::after {
 }
 .mobile-menu.open { transform: none; }
 .menu-top { display: flex; justify-content: space-between; align-items: center; min-height: calc(var(--nav-h) - 16px); }
-.menu-logo { font-family: var(--f-brand); font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink); }
+.menu-logo { font-family: var(--f-brand); font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: var(--logo); background: var(--metal-bright); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .mobile-menu .close { font-family: var(--f-mono); font-size: 14px; color: var(--ink); background: var(--paper); padding: 7px 16px; }
 .mobile-menu .close:hover { background: var(--pink); }
 .menu-links { display: flex; flex-direction: column; justify-content: center; padding: 24px 0; }
@@ -186,11 +190,11 @@ body::after {
   font-family: var(--f-brand); font-weight: 400;
   font-size: clamp(110px, 22vw, 300px);
   letter-spacing: .04em; line-height: .86;
-  color: var(--pink);
+  color: var(--logo);
   margin: 0; padding-left: .04em;
   display: inline-flex;
 }
-.wordmark span { display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .3s, font-family 0s; }
+.wordmark span { background: var(--metal); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .3s, font-family 0s; }
 .wordmark span:hover { transform: translateY(-.12em) rotate(-8deg); color: var(--magenta); font-family: var(--f-script); }
 .hero-sub { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; align-items: center; }
 .hero-sub .mono { color: var(--muted); }
@@ -384,7 +388,7 @@ body::after {
 
 /* ---------- footer ---------- */
 .site-footer { margin-top: 120px; padding: 40px var(--gutter) 28px; border-top: 1px solid var(--ink); display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
-.site-footer .big { font-family: var(--f-brand); font-weight: 400; letter-spacing: .05em; font-size: 64px; line-height: .9; color: var(--pink); }
+.site-footer .big { font-family: var(--f-brand); font-weight: 400; letter-spacing: .05em; font-size: 64px; line-height: .9; color: var(--logo); background: var(--metal); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .site-footer a { text-decoration: none; }
 .site-footer a:hover { color: var(--magenta); }
