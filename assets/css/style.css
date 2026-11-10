@@ -705,14 +705,15 @@ main p em, main li em { color: var(--magenta); }
 /* ---------- coming soon ---------- */
 .soon { border-top: 1px solid var(--ink); padding: 34px 0 10px; }
 .soon-lead { font-family: var(--f-title); font-size: clamp(36px, 5vw, 72px); line-height: .95; margin: 0 0 30px; }
-.soon-desks { display: grid; grid-template-columns: repeat(3, 1fr); border-left: 1px solid var(--ink); }
-.soon-desk { border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); border-top: 8px solid var(--dc); padding: 16px 18px 18px; display: grid; gap: 10px; }
-.soon-desk > .mono:first-child { color: var(--dc); font-weight: 700; }
-.soon-desk p { margin: 0; font-size: 17px; }
+.soon-desks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.soon-desk { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.1fr) 110px; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.soon-desk .t { font-family: var(--f-cond); text-transform: uppercase; letter-spacing: .01em; font-size: clamp(22px, 2.6vw, 36px); line-height: 1.08; }
+.soon-desk p { margin: 0; font-size: 18px; }
+.soon-desk > .muted { text-align: right; }
 .soon-cta { margin-top: 22px; }
 .soon-cta a { color: var(--magenta); }
 .soon-full { max-width: 1100px; margin: 0 auto; }
-@media (max-width: 760px) { .soon-desks { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .soon-desk { grid-template-columns: 1fr; gap: 6px; } .soon-desk .n { display: none; } .soon-desk > .muted { text-align: left; } }
 .cover-blank, .cv-soon {
   position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 12px;
   font-family: var(--f-mono); font-size: 11px; line-height: 1.35; letter-spacing: .04em; text-transform: uppercase;

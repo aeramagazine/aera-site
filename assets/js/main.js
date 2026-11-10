@@ -278,12 +278,12 @@
 
   // shown wherever stories would be, until the first real ones are added in data.js
   function comingSoon(full) {
-    const desks = [['fashion & culture', 'var(--magenta)', 'Art, music, identity and the way we live.'],
-                   ['fashion & politics', 'var(--cherry)', 'How clothing carries power, protest and the issues of our time.'],
-                   ['fashion & environment', 'var(--forest)', 'Where our clothes come from, and how fashion can do better.']];
+    const desks = [['fashion & culture', 'Art, music, identity and the way we live.'],
+                   ['fashion & politics', 'How clothing carries power, protest and the issues of our time.'],
+                   ['fashion & environment', 'Where our clothes come from, and how fashion can do better.']];
     return `<div class="soon reveal${full ? ' soon-full' : ''}">
       <p class="soon-lead">Our first stories are <em>in the works.</em></p>
-      <div class="soon-desks">${desks.map(([n, c, d]) => `<div class="soon-desk" style="--dc:${c}"><span class="mono">${n}</span><p>${d}</p><span class="mono muted">coming soon</span></div>`).join('')}</div>
+      <ol class="soon-desks">${desks.map(([n, d], i) => `<li class="soon-desk"><span class="n mono">${String(i + 1).padStart(2, '0')}</span><span class="t">${n}</span><p>${d}</p><span class="mono muted">coming soon</span></li>`).join('')}</ol>
       <p class="mono soon-cta"><a href="join.html#submit">have an idea? pitch a story →</a> &nbsp; · &nbsp; <a href="${D.instagram}" target="_blank" rel="noopener">follow ${D.handle} for updates ↗</a></p>
     </div>`;
   }
