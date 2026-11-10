@@ -185,25 +185,25 @@ body::after {
 .ornament { width: 100%; height: auto; overflow: visible; will-change: transform, opacity; }
 .ornament path { fill: none; stroke: var(--ink); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
 
-.hero-name { --fs: clamp(120px, 29vw, 400px); --lace: clamp(110px, 22vw, 300px); position: relative; text-align: center; padding: 56px var(--gutter) 10px; }
-/* black lace band running across the screen behind the big AERA (faded so the logo stands out) */
-.hero-name::before {
-  content: ''; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none;
-  top: calc(56px + var(--fs) * .43 - var(--lace) * .55); height: calc(var(--lace) * 1.08);
-  background: url('../img/lace.webp') repeat-x center / auto 100%;
-  opacity: .4;
-}
+.hero-name { --fs: clamp(120px, 29vw, 400px); position: relative; text-align: center; padding: 56px var(--gutter) 10px; }
 .hero-name .wordmark, .hero-name .hero-sub { position: relative; z-index: 2; }
 .wordmark {
   font-family: var(--f-brand); font-weight: 400;
   font-size: var(--fs);
   letter-spacing: .04em; line-height: .86;
-  color: var(--logo);
+  color: var(--ink);
   margin: 0; padding-left: .04em;
   display: inline-flex;
 }
 .wordmark span { display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .3s, font-family 0s; }
-.wordmark span:hover, .wordmark span.lit { transform: translateY(-.12em) rotate(-8deg); font-family: var(--f-script); }
+.wordmark span:hover, .wordmark span.lit {
+  transform: translateY(-.12em) rotate(-8deg); font-family: var(--f-script);
+  /* lace print shows through the script letter, still in the logo colour */
+  padding: .25em .3em; margin: -.25em -.3em;
+  background: url('../img/lace-texture.webp') center / 1.8em auto, var(--logo);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .hero-sub { display: flex; flex-direction: column; gap: 8px; margin-top: 34px; align-items: center; }
 .hero-sub .mono { color: var(--muted); }
 
