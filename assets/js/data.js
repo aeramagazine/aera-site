@@ -30,10 +30,17 @@ window.AERA = {
     // { img: 'assets/img/instagram/post-1.jpg', url: 'https://www.instagram.com/p/XXXXXXXX/' },
   ],
 
+  // Magazine cut-outs scattered around the big AERA on the home page (visitors can drag them).
+  // Use PNGs with a see-through background (on iPhone: long-press the subject in a photo → Copy/Share).
+  // Put them in assets/img/cutouts/. Leave empty to show the drawn stand-ins.
+  cutouts: [
+    // { img: 'assets/img/cutouts/eye.png', outline: '#7F1239' },
+  ],
+
   // Newest issue first. Only one should have current: true.
   // While an issue has no cover photo yet (img: ''), it shows a "coming soon" cover.
   issues: [
-    { id: 'issue-01', no: '01', title: 'coming soon', season: 'in the works', color: '#700745', ink: '#FFFFFF', img: '', current: true,
+    { id: 'issue-01', no: '01', title: 'coming soon', season: 'in the works', color: '#7F1239', ink: '#FFFFFF', img: '', current: true,
       blurb: 'Our first issue is in the works: stories on fashion & culture, fashion & politics and fashion & environment.' }
   ],
 
@@ -43,7 +50,7 @@ window.AERA = {
   stories: [
     // { id: 'my-first-story', title: 'My First Story', poster: ['MY FIRST', 'STORY'],
     //   dek: 'One sentence that sums up the story.', tag: 'fashion & culture', author: 'mira',
-    //   date: 'Dec 01, 2026', read: 4, layout: 'spread', color: '#700745', issue: '01',
+    //   date: 'Dec 01, 2026', read: 4, layout: 'spread', color: '#7F1239', issue: '01',
     //   img: 'assets/img/stories/my-first-story.jpg', photo2: 'assets/img/stories/my-first-story-2.jpg',
     //   quote: 'A line from the story worth making huge.',
     //   body: [

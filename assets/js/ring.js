@@ -64,10 +64,10 @@
   /* ---------------- the ring ---------------- */
   function startRing() {
     const stage = $('#stage');
-    const COLORS = { 'fit checks': ['#F4E21A', '#0B0B0B'], 'in the magazine': ['#700745', '#fff'] };   // add a line per section
+    const COLORS = { 'fit checks': ['#FFF8E7', '#0B0B0B'], 'in the magazine': ['#7F1239', '#fff'] };   // add a line per section
     // tab order follows COLORS, then any other sections in the order they appear
     const SHOOTS = [...new Set([...Object.keys(COLORS).filter(k => G.some(g => g.shoot === k)), ...G.map(g => g.shoot)])];
-    const fallback = [['#E5231B', '#fff'], ['#1F6B3A', '#fff'], ['#F0611E', '#0B0B0B'], ['#6E1E2B', '#E7D3DF']];
+    const fallback = [['#7F1239', '#fff'], ['#330B13', '#fff'], ['#7F1239', '#FFF8E7'], ['#330B13', '#FFF8E7']];
     const colorOf = (sh, i) => COLORS[sh] || fallback[i % fallback.length];
 
     // deck = photos + one "section" card per shoot + a back card

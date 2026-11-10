@@ -36,7 +36,7 @@
   /* ---------------- header + footer ---------------- */
   const links = [['home', 'index.html'], ['about', 'about.html'], ['stories', 'stories.html'], ['gallery', 'gallery.html'], ['staff', 'staff.html'], ['archive', 'archive.html'], ['join us', 'join.html']];
   const pageOf = { home: 'home', about: 'about', stories: 'stories', story: 'stories', gallery: 'gallery', staff: 'staff', archive: 'archive', join: 'join us' };
-  const MENU_COLORS = ['#E7B6D1', '#E9EBC8', '#8FA0FF', '#F0611E', '#E7B6D1', '#E7A71C', '#D5F45A'];
+  const MENU_COLORS = ['#FFF8E7', '#FFF8E7', '#FFF8E7', '#7F1239', '#FFF8E7', '#FFF8E7', '#FFF8E7'];
   const MENU_NOTES = ['back to the start', 'mission & sections', 'culture · politics · environment', 'fit checks & shoots', 'meet the team', 'every issue', 'thursdays @ lunch'];
   const header = $('#site-header');
   if (header) {
@@ -196,6 +196,29 @@
     }, { passive: true });
   }
 
+  /* ---------------- home: magazine cut-outs (only shown once real ones are added in data.js) ---------------- */
+  const heroName = $('.hero-name'), cuts = (D.cutouts || []).slice(0, 4);
+  if (heroName && cuts.length) {
+    const spots = [['1%', '2%', '230px', '-9deg'], ['80%', '38%', '210px', '7deg'], ['12%', '58%', '180px', '5deg'], ['73%', '0%', '180px', '-5deg']];
+    heroName.insertAdjacentHTML('afterbegin', `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="paper-cut" x="-15%" y="-15%" width="130%" height="130%">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="rim"/>
+        <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="4" result="n"/>
+        <feDisplacementMap in="rim" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+        <feFlood flood-color="#FBF8F1"/><feComposite in2="rough" operator="in" result="paper"/>
+        <feGaussianBlur in="rough" stdDeviation="5"/><feOffset dx="4" dy="7"/><feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="paper"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter></svg>
+      <div class="scraps" aria-hidden="true">${cuts.map((c, i) => { const [x, y, w, r] = spots[i];
+        return `<figure class="scrap" style="--x:${x};--y:${y};--w:${c.width || w};--r:${r}"><img src="${c.img}" alt="" draggable="false"></figure>`; }).join('')}</div>`);
+    // drag them around like real scraps of paper
+    $$('.scrap', heroName).forEach(c => {
+      let sx, sy, ox = 0, oy = 0;
+      c.addEventListener('pointerdown', e => { c.setPointerCapture(e.pointerId); c.classList.add('dragging'); sx = e.clientX - ox; sy = e.clientY - oy; });
+      c.addEventListener('pointermove', e => { if (!c.classList.contains('dragging')) return; ox = e.clientX - sx; oy = e.clientY - sy; c.style.setProperty('--dx', ox + 'px'); c.style.setProperty('--dy', oy + 'px'); });
+      const end = () => c.classList.remove('dragging');
+      c.addEventListener('pointerup', end); c.addEventListener('pointercancel', end);
+    });
+  }
+
   /* ---------------- AERA wordmark: letters light up as a finger slides over them ---------------- */
   const wm = $('.wordmark');
   if (wm) wm.addEventListener('touchmove', e => {
@@ -227,24 +250,24 @@
     if (only === 'issues') return issueBooks;
     const storyBooks = D.stories.map((s, i) => ({
       title: s.title.replace(/[:?()]/g, '').split(' ').slice(0, 3).join(' '), sub: s.tag, c: s.color,
-      t: ['#F4E21A', '#F2A7C3', '#E7D3DF', '#EDE6D6'].includes(s.color) ? '#0B0B0B' : '#FFFFFF',
+      t: ['#FFF8E7', '#FFF8E7', '#FFF8E7', '#FFF8E7'].includes(s.color) ? '#0B0B0B' : '#FFFFFF',
       font: fonts[(i + 2) % fonts.length], sw: 30 + Math.round(r() * 26), h: 180 + Math.round(r() * 80),
       href: storyUrl(s), img: (s.img || '').replace('1400/1000', '520/720'), cap: `${s.tag} — “${s.title}”`, dot: i % 3 === 0
     }));
     const pic = shoot => (D.gallery.find(g => g.shoot === shoot) || D.gallery[0] || {}).src || '';
     const deskBooks = [
-      { title: 'fashion & culture', sub: 'desk', c: '#700745', t: '#FFFFFF', font: 'f-didone', sw: 40, h: 252, href: 'stories.html', img: '', coverText: 'fashion &amp; culture<br>stories coming soon', cap: 'fashion & culture desk — stories coming soon' },
-      { title: 'fashion & politics', sub: 'desk', c: '#E5231B', t: '#FFFFFF', font: 'f-cond', sw: 46, h: 236, href: 'stories.html', img: '', coverText: 'fashion &amp; politics<br>stories coming soon', cap: 'fashion & politics desk — stories coming soon', dot: true },
-      { title: 'fashion & environment', sub: 'desk', c: '#1F6B3A', t: '#FFFFFF', font: 'f-mono', sw: 30, h: 266, href: 'stories.html', img: '', coverText: 'fashion &amp; environment<br>stories coming soon', cap: 'fashion & environment desk — stories coming soon' },
-      { title: 'fit checks', sub: 'gallery', c: '#F4E21A', t: '#0B0B0B', font: 'f-spaced', sw: 42, h: 214, href: 'gallery.html', img: pic('fit checks'), cap: 'fit checks — in the gallery' },
-      { title: 'in the magazine', sub: 'gallery', c: '#2433E8', t: '#FFFFFF', font: 'f-script', sw: 38, h: 246, href: 'gallery.html', img: pic('in the magazine'), cap: 'in the magazine — in the gallery' }
+      { title: 'fashion & culture', sub: 'desk', c: '#7F1239', t: '#FFFFFF', font: 'f-didone', sw: 40, h: 252, href: 'stories.html', img: '', coverText: 'fashion &amp; culture<br>stories coming soon', cap: 'fashion & culture desk — stories coming soon' },
+      { title: 'fashion & politics', sub: 'desk', c: '#7F1239', t: '#FFFFFF', font: 'f-cond', sw: 46, h: 236, href: 'stories.html', img: '', coverText: 'fashion &amp; politics<br>stories coming soon', cap: 'fashion & politics desk — stories coming soon', dot: true },
+      { title: 'fashion & environment', sub: 'desk', c: '#330B13', t: '#FFFFFF', font: 'f-mono', sw: 30, h: 266, href: 'stories.html', img: '', coverText: 'fashion &amp; environment<br>stories coming soon', cap: 'fashion & environment desk — stories coming soon' },
+      { title: 'fit checks', sub: 'gallery', c: '#FFF8E7', t: '#0B0B0B', font: 'f-spaced', sw: 42, h: 214, href: 'gallery.html', img: pic('fit checks'), cap: 'fit checks — in the gallery' },
+      { title: 'in the magazine', sub: 'gallery', c: '#000000', t: '#FFFFFF', font: 'f-script', sw: 38, h: 246, href: 'gallery.html', img: pic('in the magazine'), cap: 'in the magazine — in the gallery' }
     ];
     const sectionBooks = [
-      { title: 'the gallery', sub: 'photography', c: '#F0611E', t: '#0B0B0B', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: (D.gallery[0] || {}).src || '', cap: 'the gallery — every shoot, every photo' },
-      { title: 'masthead', sub: 'staff', c: '#EDE6D6', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt, cap: 'meet the staff' },
-      { title: 'Join Us', sub: 'open to all', c: '#D5F45A', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: '', coverText: 'join us<br>open to all', cap: 'join aera — open all year' },
-      { title: 'our mission', sub: 'about', c: '#6E1E2B', t: '#E7D3DF', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
-      { title: 'ROOM 310', sub: 'thursdays @ lunch', c: '#E9EBC8', t: '#2433E8', font: 'f-spaced', sw: 46, h: 265, href: 'join.html', img: '', coverText: 'room 310<br>thursdays @ lunch', cap: 'come to a meeting — room 310, thursdays at lunch' }
+      { title: 'the gallery', sub: 'photography', c: '#7F1239', t: '#FFF8E7', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: (D.gallery[0] || {}).src || '', cap: 'the gallery — every shoot, every photo' },
+      { title: 'masthead', sub: 'staff', c: '#FFF8E7', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt, cap: 'meet the staff' },
+      { title: 'Join Us', sub: 'open to all', c: '#FFF8E7', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: '', coverText: 'join us<br>open to all', cap: 'join aera — open all year' },
+      { title: 'our mission', sub: 'about', c: '#330B13', t: '#FFF8E7', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
+      { title: 'ROOM 310', sub: 'thursdays @ lunch', c: '#FFF8E7', t: '#000000', font: 'f-spaced', sw: 46, h: 265, href: 'join.html', img: '', coverText: 'room 310<br>thursdays @ lunch', cap: 'come to a meeting — room 310, thursdays at lunch' }
     ];
     // interleave so colours mix nicely
     const all = [], pools = [issueBooks, deskBooks, storyBooks, sectionBooks], total = pools.reduce((n, p) => n + p.length, 0);
@@ -336,7 +359,7 @@
     const au = staffById[s.author];
     document.title = `${s.title} — Aera Magazine`;
     document.documentElement.style.setProperty('--pc', s.color === '#0B0B0B' ? 'var(--magenta)' : s.color);
-    const accent = ['#F4E21A', '#F2A7C3', '#E7D3DF'].includes(s.color) ? 'var(--magenta)' : s.color;
+    const accent = ['#FFF8E7', '#FFF8E7', '#FFF8E7'].includes(s.color) ? 'var(--magenta)' : s.color;
 
     let hero = '';
     if (s.layout === 'poster') {
@@ -354,7 +377,7 @@
           <div><h1>${s.title}</h1><p class="dek">${s.dek}</p></div>
         </div></div>`;
     } else {
-      const tints = ['#E5231B', '#F4E21A', '#2433E8', '#700745', '#E7D3DF', '#1F6B3A', '#F0611E', '#9EE6F0', '#D5F45A'];
+      const tints = ['#7F1239', '#FFF8E7', '#000000', '#7F1239', '#FFF8E7', '#330B13', '#7F1239', '#FFF8E7', '#FFF8E7'];
       const r = rng(idx + 5);
       const letters = s.title.replace(/[^a-z]/gi, '').slice(0, 9).split('').map(ch =>
         `<span style="left:${Math.round(r() * 90)}%;top:${Math.round(r() * 80)}%;font-size:${60 + Math.round(r() * 160)}px;transform:rotate(${Math.round((r() - .5) * 30)}deg)">${ch}</span>`).join('');
@@ -399,7 +422,7 @@
   /* ---------------- page: staff ---------------- */
   if (page === 'staff') {
     const groups = [...new Set(D.staff.map(s => s.group))];
-    const r = rng(3), tapes = ['#E7D3DF', '#E9EBC8', '#9EE6F0', '#D5F45A', '#F4E21A'];
+    const r = rng(3), tapes = ['#FFF8E7', '#FFF8E7', '#FFF8E7', '#FFF8E7', '#FFF8E7'];
     $('#masthead').innerHTML = groups.map(g => `
       <section class="masthead-group">
         <div class="section-label"><h2>${g}</h2><span class="mono muted">${D.staff.filter(s => s.group === g).length}</span></div>

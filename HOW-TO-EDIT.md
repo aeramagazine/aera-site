@@ -65,7 +65,7 @@ aera-site/
 | `date` | Date shown on the story | `'Oct 20, 2026'` |
 | `read` | Minutes to read | `4` |
 | `layout` | Which design: `'poster'` (giant photo letters), `'spread'` (magazine spread with a big letter), `'collage'` (pop-art grid + scattered letters) | `'spread'` |
-| `color` | The story's colour (hex code) | `'#2433E8'` |
+| `color` | The story's colour (hex code) | `'#000000'` |
 | `img` | Main photo | `'assets/img/stories/fall-fits-hero.jpg'` |
 | `photo2` | *(optional)* Second, full-width photo | `'assets/img/stories/fall-fits-2.jpg'` |
 | `issue` | Which print issue it belongs to | `'06'` |
@@ -118,7 +118,7 @@ In `data.js`, find `staff: [`. Copy one person and change it:
 In `data.js`, find `issues: [`. Add the newest at the **top**:
 
 ```js
-{ id: 'issue-07', no: '07', title: 'your theme', season: 'spring 2027', color: '#700745', ink: '#FFFFFF',
+{ id: 'issue-07', no: '07', title: 'your theme', season: 'spring 2027', color: '#7F1239', ink: '#FFFFFF',
   img: 'assets/img/issues/issue-07-cover.jpg', current: true,
   blurb: 'One line about the issue.' },
 ```
@@ -185,9 +185,9 @@ Clicking a square opens that post on Instagram. If the list is empty, gallery ph
 Open `assets/css/style.css`. At the very top is a list like:
 
 ```css
---pink: #E7D3DF;   /* light plum tint */
---magenta: #700745;   /* the purple accent */
---cobalt: #2433E8;
+--pink: #FFF8E7;   /* light plum tint */
+--magenta: #7F1239;   /* the purple accent */
+--cobalt: #000000;
 ```
 
 Change a hex code there and it changes everywhere on the site.
