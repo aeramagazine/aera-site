@@ -224,7 +224,7 @@ body::after {
 .aera-word { font-family: var(--f-brand); }
 em { font-style: normal; }
 main p em, main li em { color: var(--magenta); }
-.shelf-title em, .page-title em, .soon-lead em { font-family: var(--f-script); font-style: normal; font-weight: 400; color: var(--magenta); font-size: 1.04em; letter-spacing: 0; text-transform: none; padding-right: .06em; }
+.shelf-title em, .page-title em { font-family: var(--f-script); font-style: normal; font-weight: 400; color: var(--magenta); font-size: 1.04em; letter-spacing: 0; text-transform: none; padding-right: .06em; }
 .shelf {
   position: relative;
   height: 330px;
@@ -704,7 +704,8 @@ main p em, main li em { color: var(--magenta); }
 
 /* ---------- coming soon ---------- */
 .soon { border-top: 1px solid var(--ink); padding: 34px 0 10px; }
-.soon-lead { font-family: var(--f-title); font-size: clamp(36px, 5vw, 72px); line-height: .95; margin: 0 0 30px; }
+.soon-lead { font-family: var(--f-serif); font-size: clamp(30px, 4vw, 52px); line-height: 1.05; margin: 0 0 30px; }
+.soon-lead em { color: inherit; }
 .soon-desks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .soon-desk { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.1fr) 110px; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .soon-desk .t { font-family: var(--f-cond); text-transform: uppercase; letter-spacing: .01em; font-size: clamp(22px, 2.6vw, 36px); line-height: 1.08; }
