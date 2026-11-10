@@ -185,14 +185,14 @@ Clicking a square opens that post on Instagram. If the list is empty, gallery ph
 Open `assets/css/style.css`. At the very top is a list like:
 
 ```css
---pink: #F2A7C3;
+--pink: #E7D3DF;   /* light plum tint */
 --magenta: #700745;   /* the purple accent */
 --cobalt: #2433E8;
 ```
 
 Change a hex code there and it changes everywhere on the site.
 
-**Fonts:** our brand font **Onyx** (`assets/fonts/OPTIOnyx.otf`, the `--f-brand` line) is used **only for the word AERA**: the logo, the big AERA on the home page, cover mastheads and the footer. To show "Aera" in Onyx inside a title, wrap it like `<span class="aera-word">Aera</span>`. Big titles and headings use `--f-title` (Bodoni Moda for now). Change that one line to switch every title font at once. To pick colours, search "color picker" on Google and copy the `#hex` code.
+**Fonts:** our brand font **Onyx** (`assets/fonts/OPTIOnyx.otf`, the `--f-brand` line) is used **only for the word AERA**: the logo, the big AERA on the home page, cover mastheads and the footer. To show "Aera" in Onyx inside a title, wrap it like `<span class="aera-word">Aera</span>`. **Article titles use Anton** (`--f-cond`) and **body paragraphs use EB Garamond** (`--f-serif`): the team chose these. Accent words in titles (`<em>…</em>`) show in the purple Pinyon Script, the "Join us" font. Other big titles and headings use `--f-title` (Bodoni Moda for now). Change that one line to switch every title font at once. To pick colours, search "color picker" on Google and copy the `#hex` code.
 
 ---
 

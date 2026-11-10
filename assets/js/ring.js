@@ -67,7 +67,7 @@
     const COLORS = { 'fit checks': ['#F4E21A', '#0B0B0B'], 'in the magazine': ['#700745', '#fff'] };   // add a line per section
     // tab order follows COLORS, then any other sections in the order they appear
     const SHOOTS = [...new Set([...Object.keys(COLORS).filter(k => G.some(g => g.shoot === k)), ...G.map(g => g.shoot)])];
-    const fallback = [['#E5231B', '#fff'], ['#1F6B3A', '#fff'], ['#F0611E', '#0B0B0B'], ['#6E1E2B', '#F2A7C3']];
+    const fallback = [['#E5231B', '#fff'], ['#1F6B3A', '#fff'], ['#F0611E', '#0B0B0B'], ['#6E1E2B', '#E7D3DF']];
     const colorOf = (sh, i) => COLORS[sh] || fallback[i % fallback.length];
 
     // deck = photos + one "section" card per shoot + a back card

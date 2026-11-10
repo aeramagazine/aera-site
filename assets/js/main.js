@@ -36,7 +36,7 @@
   /* ---------------- header + footer ---------------- */
   const links = [['home', 'index.html'], ['about', 'about.html'], ['stories', 'stories.html'], ['gallery', 'gallery.html'], ['staff', 'staff.html'], ['archive', 'archive.html'], ['join us', 'join.html']];
   const pageOf = { home: 'home', about: 'about', stories: 'stories', story: 'stories', gallery: 'gallery', staff: 'staff', archive: 'archive', join: 'join us' };
-  const MENU_COLORS = ['#F2A7C3', '#E9EBC8', '#8FA0FF', '#F0611E', '#F2A7C3', '#E7A71C', '#D5F45A'];
+  const MENU_COLORS = ['#E7B6D1', '#E9EBC8', '#8FA0FF', '#F0611E', '#E7B6D1', '#E7A71C', '#D5F45A'];
   const MENU_NOTES = ['back to the start', 'mission & sections', 'culture · politics · environment', 'fit checks & shoots', 'meet the team', 'every issue', 'thursdays @ lunch'];
   const header = $('#site-header');
   if (header) {
@@ -228,7 +228,7 @@
     if (only === 'issues') return issueBooks;
     const storyBooks = D.stories.map((s, i) => ({
       title: s.title.replace(/[:?()]/g, '').split(' ').slice(0, 3).join(' '), sub: s.tag, c: s.color,
-      t: ['#F4E21A', '#F2A7C3', '#EDE6D6'].includes(s.color) ? '#0B0B0B' : '#FFFFFF',
+      t: ['#F4E21A', '#F2A7C3', '#E7D3DF', '#EDE6D6'].includes(s.color) ? '#0B0B0B' : '#FFFFFF',
       font: fonts[(i + 2) % fonts.length], sw: 30 + Math.round(r() * 26), h: 180 + Math.round(r() * 80),
       href: storyUrl(s), img: (s.img || '').replace('1400/1000', '520/720'), cap: `${s.tag} — “${s.title}”`, dot: i % 3 === 0
     }));
@@ -244,7 +244,7 @@
       { title: 'the gallery', sub: 'photography', c: '#F0611E', t: '#0B0B0B', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: (D.gallery[0] || {}).src || '', cap: 'the gallery — every shoot, every photo' },
       { title: 'masthead', sub: 'staff', c: '#EDE6D6', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt, cap: 'meet the staff' },
       { title: 'Join Us', sub: 'open to all', c: '#D5F45A', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: '', coverText: 'join us<br>open to all', cap: 'join aera — open all year' },
-      { title: 'our mission', sub: 'about', c: '#6E1E2B', t: '#F2A7C3', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
+      { title: 'our mission', sub: 'about', c: '#6E1E2B', t: '#E7D3DF', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
       { title: 'ROOM 310', sub: 'thursdays @ lunch', c: '#E9EBC8', t: '#2433E8', font: 'f-spaced', sw: 46, h: 265, href: 'join.html', img: '', coverText: 'room 310<br>thursdays @ lunch', cap: 'come to a meeting — room 310, thursdays at lunch' }
     ];
     // interleave so colours mix nicely
@@ -337,7 +337,7 @@
     const au = staffById[s.author];
     document.title = `${s.title} — Aera Magazine`;
     document.documentElement.style.setProperty('--pc', s.color === '#0B0B0B' ? 'var(--magenta)' : s.color);
-    const accent = ['#F4E21A', '#F2A7C3'].includes(s.color) ? 'var(--magenta)' : s.color;
+    const accent = ['#F4E21A', '#F2A7C3', '#E7D3DF'].includes(s.color) ? 'var(--magenta)' : s.color;
 
     let hero = '';
     if (s.layout === 'poster') {
@@ -355,7 +355,7 @@
           <div><h1>${s.title}</h1><p class="dek">${s.dek}</p></div>
         </div></div>`;
     } else {
-      const tints = ['#E5231B', '#F4E21A', '#2433E8', '#700745', '#F2A7C3', '#1F6B3A', '#F0611E', '#9EE6F0', '#D5F45A'];
+      const tints = ['#E5231B', '#F4E21A', '#2433E8', '#700745', '#E7D3DF', '#1F6B3A', '#F0611E', '#9EE6F0', '#D5F45A'];
       const r = rng(idx + 5);
       const letters = s.title.replace(/[^a-z]/gi, '').slice(0, 9).split('').map(ch =>
         `<span style="left:${Math.round(r() * 90)}%;top:${Math.round(r() * 80)}%;font-size:${60 + Math.round(r() * 160)}px;transform:rotate(${Math.round((r() - .5) * 30)}deg)">${ch}</span>`).join('');
@@ -400,7 +400,7 @@
   /* ---------------- page: staff ---------------- */
   if (page === 'staff') {
     const groups = [...new Set(D.staff.map(s => s.group))];
-    const r = rng(3), tapes = ['#F2A7C3', '#E9EBC8', '#9EE6F0', '#D5F45A', '#F4E21A'];
+    const r = rng(3), tapes = ['#E7D3DF', '#E9EBC8', '#9EE6F0', '#D5F45A', '#F4E21A'];
     $('#masthead').innerHTML = groups.map(g => `
       <section class="masthead-group">
         <div class="section-label"><h2>${g}</h2><span class="mono muted">${D.staff.filter(s => s.group === g).length}</span></div>
@@ -421,7 +421,7 @@
   /* ---------------- page: archive ---------------- */
   if (page === 'archive') {
     $('#issues').innerHTML = D.issues.map(is => `
-      <a class="issue-card reveal" id="${is.id}" href="#${is.id}" style="--c:${is.color}" data-view="${is.img ? 'read →' : 'soon'}">
+      <a class="issue-card reveal" id="${is.id}" href="#${is.id}" style="--c:${is.color};--t:${is.ink || "#0B0B0B"}" data-view="${is.img ? 'read →' : 'soon'}">
         <div class="cv">${is.img ? `<img src="${is.img}" alt="Cover of issue ${is.no}" loading="lazy">` : `<span class="cv-soon mono">issue ${is.no}<br>coming soon</span>`}<span class="mast">AERA</span></div>
         <div class="mono muted" style="margin-top:12px">issue ${is.no} · ${is.season}${is.current ? ' · <span style="color:var(--magenta)">current</span>' : ''}</div>
         <h3>${is.title}</h3><p>${is.blurb}</p>

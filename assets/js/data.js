@@ -33,7 +33,7 @@ window.AERA = {
   // Newest issue first. Only one should have current: true.
   // While an issue has no cover photo yet (img: ''), it shows a "coming soon" cover.
   issues: [
-    { id: 'issue-01', no: '01', title: 'coming soon', season: 'in the works', color: '#F2A7C3', ink: '#0B0B0B', img: '', current: true,
+    { id: 'issue-01', no: '01', title: 'coming soon', season: 'in the works', color: '#700745', ink: '#FFFFFF', img: '', current: true,
       blurb: 'Our first issue is in the works: stories on fashion & culture, fashion & politics and fashion & environment.' }
   ],
 
