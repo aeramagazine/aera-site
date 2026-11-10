@@ -185,12 +185,13 @@ body::after {
 .ornament { width: 100%; height: auto; overflow: visible; will-change: transform, opacity; }
 .ornament path { fill: none; stroke: var(--ink); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
 
-.hero-name { --fs: clamp(110px, 22vw, 300px); position: relative; text-align: center; padding: 56px var(--gutter) 10px; }
-/* black lace band running across the screen behind the big AERA */
+.hero-name { --fs: clamp(120px, 29vw, 400px); --lace: clamp(110px, 22vw, 300px); position: relative; text-align: center; padding: 56px var(--gutter) 10px; }
+/* black lace band running across the screen behind the big AERA (faded so the logo stands out) */
 .hero-name::before {
   content: ''; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none;
-  top: calc(56px + var(--fs) * .43 - var(--fs) * .55); height: calc(var(--fs) * 1.08);
+  top: calc(56px + var(--fs) * .43 - var(--lace) * .55); height: calc(var(--lace) * 1.08);
   background: url('../img/lace.webp') repeat-x center / auto 100%;
+  opacity: .4;
 }
 .hero-name .wordmark, .hero-name .hero-sub { position: relative; z-index: 2; }
 .wordmark {
