@@ -57,13 +57,26 @@ window.initShelf = function (el, books) {
   function frame(now) {
     const k = Math.min(3, (now - last) / 16.67); last = now;
     if (!dragging) {
-      const goal = hovering ? AUTO * .12 : AUTO;
+      const goal = hovering ? 0 : AUTO;
       v += (goal - v) * .04 * k;
       xFirst += v * k;
     }
-    for (const it of items) {
-      if (Math.abs(it.target - it.w) > .3) { it.w += (it.target - it.w) * Math.min(1, .13 * k); it.el.style.width = it.w + 'px'; }
+    // grow/shrink books, but keep the opening book in place so the row doesn't jump
+    const anchor = current && current.x > -EDGE && current.x < el.clientWidth ? current : null;
+    let shift = 0;
+    for (let j = 0; j < n; j++) {
+      const it = items[(first + j) % n];
+      if (it === anchor) break;
+      if (Math.abs(it.target - it.w) > .3) {
+        const nw = it.w + (it.target - it.w) * Math.min(1, .1 * k);
+        shift += nw - it.w;
+      }
     }
+    for (const it of items) {
+      if (Math.abs(it.target - it.w) > .3) { it.w += (it.target - it.w) * Math.min(1, .1 * k); it.el.style.width = it.w + 'px'; }
+      else if (it.w !== it.target) { it.w = it.target; it.el.style.width = it.w + 'px'; }
+    }
+    xFirst -= shift;
     while (xFirst + items[first].w + GAP < -EDGE) { xFirst += items[first].w + GAP; first = (first + 1) % n; }
     while (xFirst > -EDGE) { first = (first - 1 + n) % n; xFirst -= items[first].w + GAP; }
     let x = xFirst;
@@ -94,10 +107,14 @@ window.initShelf = function (el, books) {
   if (!reduced) setInterval(feature, 3200);
 
   /* ---- hover / focus / tap ---- */
-  let lastPointer = 'mouse';
+  let lastPointer = 'mouse', hoverT = 0;
   items.forEach(it => {
-    it.el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { hovering = true; setOpen(it); } });
-    it.el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { hovering = false; } });
+    it.el.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || dragging || current === it) return;
+      hovering = true;
+      clearTimeout(hoverT); hoverT = setTimeout(() => setOpen(it), 120);
+    });
+    it.el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { hovering = false; clearTimeout(hoverT); } });
     it.el.addEventListener('focus', () => { hovering = true; setOpen(it); });
     it.el.addEventListener('blur', () => { hovering = false; });
     it.el.addEventListener('click', e => {
@@ -125,6 +142,6 @@ window.initShelf = function (el, books) {
   let lastY = scrollY;
   addEventListener('scroll', () => {
     const dy = scrollY - lastY; lastY = scrollY;
-    if (!reduced) v = Math.max(-26, Math.min(26, v - dy * .08));
+    if (!reduced) v = Math.max(-12, Math.min(12, v - Math.max(-60, Math.min(60, dy)) * .04));
   }, { passive: true });
 };
