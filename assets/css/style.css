@@ -197,8 +197,8 @@ body::after {
 }
 .wordmark span { display: inline-block; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), color .3s, font-family 0s; }
 .wordmark span:hover, .wordmark span.lit {
-  transform: translateY(-.12em) rotate(-8deg); font-family: var(--f-script);
-  /* lace print shows through the script letter, still in the logo colour */
+  transform: translateY(-.12em) rotate(-8deg);
+  /* lace print shows through the letter, in the logo colour */
   padding: .25em .3em; margin: -.25em -.3em;
   background: url('../img/lace-texture.webp') center / 1.8em auto, var(--logo);
   -webkit-background-clip: text; background-clip: text;
