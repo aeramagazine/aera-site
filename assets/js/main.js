@@ -97,7 +97,6 @@
       </ul>
       <div class="footer-base mono muted">
         <span>© ${new Date().getFullYear()} aera magazine</span>
-        <span>made by students, for students</span>
       </div>
     </footer>`;
   }
