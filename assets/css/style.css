@@ -145,7 +145,7 @@ body::after {
 }
 .mobile-menu.open { transform: none; }
 .menu-top { display: flex; justify-content: space-between; align-items: center; min-height: calc(var(--nav-h) - 16px); }
-.menu-logo { font-family: var(--f-brand); font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: var(--ivory); }   /* on the black menu */
+.menu-logo { font-family: var(--f-brand); font-size: 34px; letter-spacing: 0; text-transform: uppercase; color: var(--ivory); transform: scaleX(1.83); transform-origin: left center; }   /* on the black menu; wide like the brand logo file, same as .nav-logo */
 .mobile-menu .close { font-family: var(--f-mono); text-transform: uppercase; font-size: 14px; color: var(--ink); background: var(--paper); padding: 7px 16px; }
 .mobile-menu .close:hover { background: var(--magenta); color: #fff; }
 /* page names with the meeting + Instagram line right under them, centred together */
@@ -385,7 +385,7 @@ main p em, main li em { color: var(--magenta); }
 
 /* ---------- footer ---------- */
 .site-footer { margin-top: 120px; padding: 40px var(--gutter) 28px; border-top: 1px solid var(--ink); display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
-.site-footer .big { font-family: var(--f-brand); font-weight: 400; letter-spacing: .05em; font-size: 64px; line-height: .9; color: var(--logo); }
+.site-footer .big { width: fit-content; /* box hugs the letters, so stretching it doesn't push the page wider than a phone screen */ font-family: var(--f-brand); font-weight: 400; letter-spacing: 0; font-size: 72px; line-height: .9; color: var(--logo); transform: scaleX(1.83); transform-origin: left center; }   /* wide like the brand logo file, same as .nav-logo */
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .site-footer a { text-decoration: none; }
 .site-footer a:hover { color: var(--magenta); }
