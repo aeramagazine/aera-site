@@ -365,10 +365,11 @@ main p em, main li em { color: var(--magenta); }
 
 /* ---------- instagram ---------- */
 .ig-block { margin-top: 110px; text-align: center; }
+.ig-block > .mono { display: block; margin-bottom: 22px; }
 .ig-handle {
   display: inline-block; text-decoration: none;
   font-family: var(--f-cond);
-  font-size: clamp(26px, 7.6vw, 120px); line-height: .9; max-width: 100%; overflow-wrap: anywhere;
+  font-size: clamp(18px, 5.4vw, 76px); line-height: 1; max-width: 100%; white-space: nowrap;
   transition: color .3s;
 }
 .ig-handle:hover { color: var(--magenta); }
