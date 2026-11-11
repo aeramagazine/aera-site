@@ -36,8 +36,6 @@
   /* ---------------- header + footer ---------------- */
   const links = [['home', 'index.html'], ['about', 'about.html'], ['stories', 'stories.html'], ['gallery', 'gallery.html'], ['staff', 'staff.html'], ['archive', 'archive.html'], ['join us', 'join.html']];
   const pageOf = { home: 'home', about: 'about', stories: 'stories', story: 'stories', gallery: 'gallery', staff: 'staff', archive: 'archive', join: 'join us' };
-  const MENU_COLORS = ['#FFF8E7', '#FFF8E7', '#FFF8E7', '#7F1239', '#FFF8E7', '#FFF8E7', '#FFF8E7'];
-  const MENU_NOTES = ['back to the start', 'mission & sections', 'culture · politics · environment', 'fit checks & shoots', 'meet the team', 'every issue', 'thursdays @ lunch'];
   const header = $('#site-header');
   if (header) {
     header.outerHTML = `
@@ -54,12 +52,11 @@
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <div class="menu-top"><span class="menu-logo">aera</span><button class="close">close ✕</button></div>
       <nav class="menu-links" aria-label="Menu">
-        ${links.map(([l, h], i) => `<a href="${h}" style="--hc:${MENU_COLORS[i]}" ${pageOf[page] === l ? 'aria-current="page"' : ''}><small>${String(i + 1).padStart(2, '0')}</small><span>${l}</span><em>${MENU_NOTES[i]}</em></a>`).join('')}
+        ${links.map(([l, h]) => `<a href="${h}" ${pageOf[page] === l ? 'aria-current="page"' : ''}><span>${l}</span></a>`).join('')}
       </nav>
       <aside class="menu-info mono">
-        <p>a student fashion magazine<br>palo alto high school</p>
-        <p>meetings<br>thursdays @ lunch · room 310</p>
-        <p><a href="${D.instagram}" target="_blank" rel="noopener">${D.handle}</a><br><a href="mailto:${D.email}">${D.email}</a></p>
+        <p>room 310 · thursdays at lunch</p>
+        <p><a href="${D.instagram}" target="_blank" rel="noopener">${D.handle}</a></p>
       </aside>
     </div>`;
     const menu = $('#mobile-menu'), tog = $('.nav-toggle');
