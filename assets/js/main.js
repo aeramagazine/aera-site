@@ -105,22 +105,6 @@
   const ph = $('.page-head');
   if (ph && page !== 'home') ph.insertAdjacentHTML('afterbegin', `<div class="crumbs mono"><a href="index.html">home</a><span>/</span><span>${pageOf[page]}</span></div>`);
 
-  /* ---------------- custom cursor ---------------- */
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const c = document.createElement('div');
-    c.className = 'cursor'; c.innerHTML = '<span>view →</span>';
-    document.body.appendChild(c);
-    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
-    addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; });
-    const VIEW = '.book, .card, .cutout, .story-card, .poster-block, .issue-card, .ig-grid a, .masonry button, .story-row a, .polaroid, [data-view]';
-    document.addEventListener('pointerover', e => {
-      const t = e.target.closest(VIEW);
-      c.classList.toggle('view', !!t);
-      if (t) c.firstChild.textContent = t.dataset.view || 'view →';
-    });
-    (function loop() { cx += (mx - cx) * .22; cy += (my - cy) * .22; c.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
-  }
-
   /* ---------------- hand-drawn ornament ---------------- */
   function buildOrnament(svg, mirror) {
     const W = 600, H = 150, r = rng(7);
@@ -278,9 +262,9 @@
 
   // shown wherever stories would be, until the first real ones are added in data.js
   function comingSoon(full) {
-    const desks = [['fashion & culture', 'Art, music, identity and the way we live.'],
-                   ['fashion & politics', 'How clothing carries power, protest and the issues of our time.'],
-                   ['fashion & environment', 'Where our clothes come from, and how fashion can do better.']];
+    const desks = [['Fashion & Culture', 'Art, music, identity and the way we live.'],
+                   ['Fashion & Politics', 'How clothing carries power, protest and the issues of our time.'],
+                   ['Fashion & Environment', 'Where our clothes come from, and how fashion can do better.']];
     return `<div class="soon reveal${full ? ' soon-full' : ''}">
       <p class="soon-lead">Our first stories are <em>in the works.</em></p>
       <ol class="soon-desks">${desks.map(([n, d], i) => `<li class="soon-desk"><span class="n mono">${String(i + 1).padStart(2, '0')}</span><span class="t">${n}</span><p>${d}</p><span class="mono muted">coming soon</span></li>`).join('')}</ol>
