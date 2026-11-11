@@ -84,7 +84,14 @@ window.AERA = {
 
     // ── Website Managers ──
     { id: 'kimberly', name: 'Kimberly Li',        role: 'Website Manager', group: 'Website Managers', year: '', img: '', bio: '', fave: '', ig: '' },
-    { id: 'ruhi',     name: 'Ruhi Karamchandani', role: 'Website Manager', group: 'Website Managers', year: '', img: '', bio: '', fave: '', ig: '' }
+    { id: 'ruhi',     name: 'Ruhi Karamchandani', role: 'Website Manager', group: 'Website Managers', year: '', img: '', bio: '', fave: '', ig: '' },
+
+    // ── Writers ──
+    { id: 'serena',   name: 'Serena Zhang',       role: 'Writer', group: 'Writers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'myra',     name: 'Myra Shinde',        role: 'Writer', group: 'Writers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'emily',    name: 'Emily Eden',         role: 'Writer', group: 'Writers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'anahita',  name: 'Anahita Vondrak',    role: 'Writer', group: 'Writers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'adeline',  name: 'Adeline',            role: 'Writer', group: 'Writers', year: '', img: '', bio: '', fave: '', ig: '' }
   ],
 
   // Gallery sections: each `shoot` name becomes a tab + coloured card in the ring.
