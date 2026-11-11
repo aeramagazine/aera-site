@@ -17,7 +17,8 @@
 }
 
 :root {
-  --paper: #FFFFFF;
+  --paper: #FCFBF8;   /* page background: white with a hint of warmth */
+  --panel: #F1EDE5;   /* soft stone behind the bookshelf and gallery ring */
   --ink: #000000;
   --muted: #5F5F5F;
   --line: #DDDDDD;
@@ -193,7 +194,7 @@ body::after {
 .shelf-panel {
   position: relative;
   margin: 34px var(--gutter) 0;
-  background: var(--ivory);
+  background: var(--panel);
   padding: 28px 0 0;
   overflow: hidden;
 }
@@ -527,7 +528,7 @@ main p em, main li em { color: var(--magenta); }
 /* ---------- gallery ring ---------- */
 .ring-frame {
   position: relative; margin: 0 var(--gutter);
-  background: var(--ivory); height: calc(100vh - var(--nav-h) - 90px); min-height: 560px;
+  background: var(--panel); height: calc(100vh - var(--nav-h) - 90px); min-height: 560px;
   overflow: hidden;
 }
 .ring-frame .panel-corners { inset: 14px 18px auto; }
