@@ -41,13 +41,13 @@
   --issue: var(--pink);          /* current issue colour — re-theme per issue */
 
   --f-brand: 'Onyx', 'Bodoni Moda', Georgia, serif;   /* AERA logo font: only for the word AERA */
-  --f-title: 'Kamerik Title', 'Helvetica Neue', Arial, sans-serif;  /* titles + headings: Kamerik bold, normal case */
+  --f-title: 'Bodoni Moda', 'Didot', Georgia, serif;  /* big display titles (page titles, ring, menu) */
   --f-display: 'Montserrat', system-ui, sans-serif;
   --f-mono: 'Rode', 'Helvetica Neue', Arial, sans-serif;  /* labels, bylines, small text: always uppercase */
   --f-dot: var(--f-mono);
   --f-serif: 'Kamerik', 'Helvetica Neue', Arial, sans-serif;  /* descriptions + article text */
   --f-didone: var(--f-serif);
-  --f-cond: var(--f-title);
+  --f-cond: 'Kamerik Title', 'Helvetica Neue', Arial, sans-serif;  /* article/section titles: Kamerik bold, normal case */
   --f-script: 'Pinyon Script', cursive;
 
   --gutter: clamp(16px, 4vw, 48px);
@@ -150,7 +150,7 @@ body::after {
   text-decoration: none; border-bottom: 1px solid #ffffff1f; padding: 2px 0;
 }
 .menu-links small { font-family: var(--f-mono); text-transform: uppercase; font-size: 12px; color: #ffffff70; }
-.menu-links span { font-family: var(--f-title); font-size: clamp(44px, 9.5vh, 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.menu-links span { font-family: var(--f-title); text-transform: uppercase; font-size: clamp(44px, 9.5vh, 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
 .menu-links em { font-family: var(--f-mono); text-transform: uppercase; font-style: normal; font-size: 12px; color: var(--hc); opacity: 0; transform: translateX(-10px); transition: opacity .25s, transform .3s; }
 .menu-links a:hover span, .menu-links a:focus-visible span, .menu-links a[aria-current="page"] span { color: var(--hc); }
 .menu-links a:hover span { transform: translateX(14px); }
@@ -676,12 +676,12 @@ main p em, main li em { color: var(--magenta); }
 .ring-sections button i { width: 9px; height: 9px; display: inline-block; border: 1px solid #0003; }
 .ring-sections button:hover, .ring-sections button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .ring-label { text-align: center; margin-bottom: 14px; display: grid; gap: 2px; }
-.ring-label #ring-name { font-family: var(--f-title); font-size: clamp(34px, 4.4vw, 60px); line-height: .9; letter-spacing: .02em; }
+.ring-label #ring-name { font-family: var(--f-title); font-size: clamp(34px, 4.4vw, 60px); line-height: .9; text-transform: uppercase; letter-spacing: .02em; }
 .card.type.t-section, .card.type.t-back {
   display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
   padding: 10px; text-align: left; cursor: pointer; border: 1px solid #0002;
 }
-.card .sec-name { font-family: var(--f-title); font-size: calc(var(--cw) * .26); line-height: .9; }
+.card .sec-name { font-family: var(--f-title); font-size: calc(var(--cw) * .26); line-height: .9; text-transform: uppercase; }
 .card .sec-count { font-family: var(--f-mono); text-transform: uppercase; font-size: 10px; }
 .card.type.t-back { background: var(--paper); color: var(--ink); border: 1px solid var(--ink); }
 @media (max-width: 700px) {
