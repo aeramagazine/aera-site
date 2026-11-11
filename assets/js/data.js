@@ -64,39 +64,27 @@ window.AERA = {
   // Staff page sections appear in this order. `group` decides the section,
   // `role` is the title shown on the polaroid. TODO: replace placeholder people.
   staff: [
-    // ── Editors-in-Chief (3) ──
-    { id: 'mira',  name: 'Mira Castellanos', role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: 'Class of 2027', fave: 'A thrifted leather trench, always', ig: '@mira.c', img: IMG('p1', 400, 500, true), alt: IMG('p1c', 400, 500),
-      bio: 'Runs the editorial calendar and the group chat. Believes every outfit is an argument.' },
-    { id: 'june',  name: 'June Okafor',      role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: 'Class of 2027', fave: 'Style icon: her mom in the 90s', ig: '@june.ok', img: IMG('p2', 400, 500, true), alt: IMG('p2c', 400, 500),
-      bio: 'Writes the interviews, edits everything else. Owns more tote bags than shoes.' },
-    { id: 'kai',   name: 'Kai Moreau',       role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: 'Class of 2027', fave: 'Anything in cobalt blue', ig: '@kai.moreau', img: IMG('p3', 400, 500, true), alt: IMG('p3c', 400, 500),
-      bio: 'Sets the creative direction for every issue. Responsible for the bookshelf on the homepage.' },
+    // To add a photo, bio etc. fill in the empty fields, e.g.
+    //   img: 'assets/img/staff/lily.jpg', year: 'Class of 2027', bio: 'One or two sentences.', fave: 'Favourite piece or style icon', ig: '@handle'
+    // Cards without a photo show the person's initials.
 
-    // ── Desk Heads (one per section) ──
-    { id: 'priya', name: 'Priya Desai',      role: 'Desk Head — Politics & Fashion',      group: 'Desk Heads', year: 'Class of 2028', fave: 'Style icon: Björk', ig: '@priya.writes', img: IMG('p7', 400, 500, true), alt: IMG('p7c', 400, 500),
-      bio: 'Covers how clothes, power and protest collide. Has strong opinions about dress codes.' },
-    { id: 'sol',   name: 'Sol Ramírez',      role: 'Desk Head — Environmental & Fashion', group: 'Desk Heads', year: 'Class of 2028', fave: 'Loafers with everything', ig: '@sol.r', img: IMG('p8', 400, 500, true), alt: IMG('p8c', 400, 500),
-      bio: 'Leads our sustainability coverage — thrift, mending, and where our clothes really come from.' },
-    { id: 'wren',  name: 'Wren Callahan',    role: 'Desk Head — Culture & Fashion',       group: 'Desk Heads', year: 'Class of 2027', fave: 'Vintage Levi’s, men’s blazers', ig: '@wren.styles', img: IMG('p6', 400, 500, true), alt: IMG('p6c', 400, 500),
-      bio: 'Music, film, art and the people on campus who dress like they mean it.' },
+    // ── Editors-in-Chief ──
+    { id: 'lily',     name: 'Lily Chen',          role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'cecilia',  name: 'Cecilia Cassago',    role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'noor',     name: 'Noor Khan',          role: 'Editor-in-Chief', group: 'Editors-in-Chief', year: '', img: '', bio: '', fave: '', ig: '' },
 
-    // ── Managers ──
-    { id: 'noor',  name: 'Noor Haddad',      role: 'Media Manager',   group: 'Managers', year: 'Class of 2029', fave: 'Silver jewelry, stacked', ig: '@noor.hd', img: IMG('p10', 400, 500, true), alt: IMG('p10c', 400, 500),
-      bio: 'Runs @aerafashionmagazine. Has filmed 200+ fit-check reels.' },
-    { id: 'leo',   name: 'Leo Park',         role: 'Website Manager', group: 'Managers', year: 'Class of 2028', fave: 'Monochrome everything', ig: '@leo.park', img: IMG('p12', 400, 500, true), alt: IMG('p12c', 400, 500),
-      bio: 'Keeps this website running and posts every new story online.' },
-    { id: 'eli',   name: 'Eli Brennan',      role: 'Design Manager',  group: 'Managers', year: 'Class of 2028', fave: 'A really good scarf', ig: '@eli.designs', img: IMG('p9', 400, 500, true), alt: IMG('p9c', 400, 500),
-      bio: 'Lays out the print issue and draws the scribbles you see all over this site.' },
+    // ── Desk Heads ──
+    { id: 'kalea',    name: 'Kalea Chen',         role: 'Desk Head, Culture',     group: 'Desk Heads', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'lenox',    name: 'Lenox Hancock',      role: 'Desk Head, Politics',    group: 'Desk Heads', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'zara',     name: 'Zara Bellubi',       role: 'Desk Head, Environment', group: 'Desk Heads', year: '', img: '', bio: '', fave: '', ig: '' },
 
-    // ── Staff Members (writers / models / photographers) ──
-    { id: 'theo',  name: 'Theo Lindqvist',   role: 'Photographer', group: 'Staff Members', year: 'Class of 2028', fave: 'Film cameras & cargo pants', ig: '@theo.shoots', img: IMG('p4', 400, 500, true), alt: IMG('p4c', 400, 500),
-      bio: 'Shoots on a camera older than the school. Leads the Fit Check series.' },
-    { id: 'ava',   name: 'Ava Nakamura',     role: 'Photographer', group: 'Staff Members', year: 'Class of 2028', fave: 'Hair clips, the more the better', ig: '@ava.nkmr', img: IMG('p5', 400, 500, true), alt: IMG('p5c', 400, 500),
-      bio: 'Golden-hour devotee. Will absolutely make you lie down in a field for the shot.' },
-    { id: 'rosa',  name: 'Rosa Medina',      role: 'Writer',       group: 'Staff Members', year: 'Class of 2029', fave: 'Big earrings, bigger coats', ig: '@rosa.m', img: IMG('p13', 400, 500, true), alt: IMG('p13c', 400, 500),
-      bio: 'Writes for all three desks. Always has a notebook and a pitch.' },
-    { id: 'jules', name: 'Jules Ito',        role: 'Model & Writer', group: 'Staff Members', year: 'Class of 2029', fave: 'Platform boots in every colour', ig: '@jules.ito', img: IMG('p11', 400, 500, true), alt: IMG('p11c', 400, 500),
-      bio: 'Has walked in every Aera shoot so far. Writes our Fit Check captions.' }
+    // ── Media Managers ──
+    { id: 'harlow',   name: 'Harlow B',           role: 'Media Manager', group: 'Media Managers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'violet',   name: 'Violet Caspari',     role: 'Media Manager', group: 'Media Managers', year: '', img: '', bio: '', fave: '', ig: '' },
+
+    // ── Website Managers ──
+    { id: 'kimberly', name: 'Kimberly Li',        role: 'Website Manager', group: 'Website Managers', year: '', img: '', bio: '', fave: '', ig: '' },
+    { id: 'ruhi',     name: 'Ruhi Karamchandani', role: 'Website Manager', group: 'Website Managers', year: '', img: '', bio: '', fave: '', ig: '' }
   ],
 
   // Gallery sections: each `shoot` name becomes a tab + coloured card in the ring.
@@ -108,9 +96,8 @@ window.AERA = {
     ['g17', 600, 800, 'in the magazine'], ['g18', 800, 600, 'fit checks']
   ].map(([seed, w, h, shoot], i) => ({
     id: seed, src: IMG(seed, w, h), w, h, shoot,
-    photographer: ['Theo Lindqvist', 'Ava Nakamura'][i % 2],
-    model: ['Sasha P.', 'Jordan L.', 'Remy T.', 'Imani K.', 'Lou B.'][i % 5],
-    stylist: 'Wren Callahan', mua: ['Ines R.', 'Dani M.'][i % 2]
+    // placeholder photos: replace with real shoots and credits
+    photographer: 'Aera staff', model: '', stylist: '', mua: ''
   })),
 
   events: [

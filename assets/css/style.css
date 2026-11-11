@@ -518,6 +518,7 @@ main p em, main li em { color: var(--magenta); }
 .polaroid .ph { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #ddd; }
 .polaroid .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .5s; }
 .polaroid .ph .alt { opacity: 0; }
+.polaroid .ph .initials { position: absolute; inset: 0; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-family: var(--f-title); font-size: clamp(54px, 7vw, 84px); letter-spacing: .04em; }
 .polaroid:hover .ph .alt { opacity: 1; }
 .polaroid h3 { font-family: var(--f-didone); font-weight: 400; font-size: 24px; margin: 12px 0 0; line-height: 1.05; }
 .polaroid .role { color: var(--magenta); margin-top: 4px; }

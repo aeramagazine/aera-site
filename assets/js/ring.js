@@ -21,7 +21,7 @@
     $('img', lb).src = g.src.replace(/\/(\d+)\/(\d+)$/, (m, w, h) => `/${w * 2}/${h * 2}`);
     $('img', lb).alt = `Photo from the ${g.shoot} shoot`;
     $('.lb-count', lb).textContent = `${String(lbIdx + 1).padStart(2, '0')} / ${String(lbList.length).padStart(2, '0')} — ${g.shoot}`;
-    $('.lb-credits', lb).textContent = `photographer: ${g.photographer} · model: ${g.model} · stylist: ${g.stylist} · mua: ${g.mua}`.toLowerCase();
+    $('.lb-credits', lb).textContent = [['photographer', g.photographer], ['model', g.model], ['stylist', g.stylist], ['mua', g.mua]].filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join(' · ').toLowerCase();
   }
   function openLB(i, list = G) { lbList = list; showLB(i); lb.hidden = false; $('.lb-close', lb).focus(); }
   const closeLB = () => { lb.hidden = true; };

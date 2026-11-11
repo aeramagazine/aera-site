@@ -248,7 +248,7 @@
     ];
     const sectionBooks = [
       { title: 'the gallery', sub: 'photography', c: '#7F1239', t: '#FFF8E7', font: 'f-cond', sw: 44, h: 250, href: 'gallery.html', img: (D.gallery[0] || {}).src || '', cap: 'the gallery — every shoot, every photo' },
-      { title: 'masthead', sub: 'staff', c: '#FFF8E7', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt, cap: 'meet the staff' },
+      { title: 'masthead', sub: 'staff', c: '#FFF8E7', t: '#0B0B0B', font: 'f-mono', sw: 26, h: 270, href: 'staff.html', img: D.staff[0].alt || D.staff[0].img || '', coverText: 'the masthead<br>meet the staff', cap: 'meet the staff' },
       { title: 'Join Us', sub: 'open to all', c: '#FFF8E7', t: '#0B0B0B', font: 'f-script', sw: 40, h: 200, href: 'join.html', img: '', coverText: 'join us<br>open to all', cap: 'join aera — open all year' },
       { title: 'our mission', sub: 'about', c: '#330B13', t: '#FFF8E7', font: 'f-didone', sw: 36, h: 240, href: 'about.html', img: '', coverText: 'fashion within its era', cap: 'about aera magazine' },
       { title: 'ROOM 310', sub: 'thursdays @ lunch', c: '#FFF8E7', t: '#000000', font: 'f-spaced', sw: 46, h: 265, href: 'join.html', img: '', coverText: 'room 310<br>thursdays @ lunch', cap: 'come to a meeting — room 310, thursdays at lunch' }
@@ -413,11 +413,11 @@
         <div class="board">
           ${D.staff.filter(s => s.group === g).map(s => `
             <article class="polaroid reveal" id="${s.id}" style="--r:${((r() - .5) * 7).toFixed(1)}deg; --tape:${tapes[Math.floor(r() * tapes.length)]}" data-view="hi!">
-              <div class="ph"><img src="${s.img}" alt="Portrait of ${s.name}" loading="lazy"><img class="alt" src="${s.alt}" alt="" loading="lazy"></div>
+              <div class="ph">${s.img ? `<img src="${s.img}" alt="Portrait of ${s.name}" loading="lazy">${s.alt ? `<img class="alt" src="${s.alt}" alt="" loading="lazy">` : ''}` : `<span class="initials" aria-hidden="true">${s.name.split(' ').map(w => w[0]).join('')}</span>`}</div>
               <h3>${s.name}</h3>
-              <div class="role mono">${s.role} · ${s.year.toLowerCase()}</div>
-              <p>${s.bio}</p>
-              <div class="fave">${s.fave}</div>
+              <div class="role mono">${s.role}${s.year ? ` · ${s.year}` : ''}</div>
+              ${s.bio ? `<p>${s.bio}</p>` : ''}
+              ${s.fave ? `<div class="fave">${s.fave}</div>` : ''}
               ${s.ig ? `<a class="ig mono" href="${D.instagram}" target="_blank" rel="noopener">${s.ig}</a>` : ''}
             </article>`).join('')}
         </div>
