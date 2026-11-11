@@ -51,6 +51,7 @@
     </header>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <div class="menu-top"><span class="menu-logo">aera</span><button class="close">close ✕</button></div>
+      <div class="menu-body">
       <nav class="menu-links" aria-label="Menu">
         ${links.map(([l, h]) => `<a href="${h}" ${pageOf[page] === l ? 'aria-current="page"' : ''}><span>${l}</span></a>`).join('')}
       </nav>
@@ -58,6 +59,7 @@
         <p>room 310 · thursdays at lunch</p>
         <p><a href="${D.instagram}" target="_blank" rel="noopener">${D.handle}</a></p>
       </aside>
+      </div>
     </div>`;
     const menu = $('#mobile-menu'), tog = $('.nav-toggle');
     const setMenu = open => {

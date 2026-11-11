@@ -134,7 +134,7 @@ body::after {
 .mobile-menu {
   position: fixed; inset: 0; z-index: 600;
   background: var(--ink); color: var(--paper);
-  display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
+  display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr;
   padding: 16px var(--gutter) 28px;
   transform: translateY(-100%);
   transition: transform .55s cubic-bezier(.7, 0, .2, 1);
@@ -145,7 +145,10 @@ body::after {
 .menu-logo { font-family: var(--f-brand); font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: var(--ivory); }   /* on the black menu */
 .mobile-menu .close { font-family: var(--f-mono); text-transform: uppercase; font-size: 14px; color: var(--ink); background: var(--paper); padding: 7px 16px; }
 .mobile-menu .close:hover { background: var(--magenta); color: #fff; }
-.menu-links { display: flex; flex-direction: column; justify-content: center; padding: 24px 0; }
+/* page names with the meeting + Instagram line right under them, centred together */
+.menu-body { display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: 24px 0; }
+.menu-links { display: flex; flex-direction: column; }
+@media (min-width: 1000px) { .menu-body { padding-right: calc(clamp(70px, 9vw, 130px) + 40px); } }
 .menu-links a { display: block; text-decoration: none; border-bottom: 1px solid #ffffff1f; padding: 2px 0; color: #ffffff99; }
 .menu-links span { display: inline-block; font-family: var(--f-title); text-transform: uppercase; font-size: clamp(36px, min(9.5vh, 15vw), 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
 .menu-links a:hover span, .menu-links a:focus-visible span, .menu-links a[aria-current="page"] span { color: var(--paper); }
@@ -157,13 +160,6 @@ body::after {
 .menu-info p { margin: 0; }
 .menu-info a { color: var(--paper); text-decoration: none; }
 .menu-info a:hover { color: #FFF8E7; }
-@media (min-width: 1000px) {
-  .mobile-menu { grid-template-columns: 1.6fr 1fr; grid-template-rows: auto 1fr; column-gap: 60px; }
-  .menu-top { grid-column: 1 / -1; }
-  .menu-info { flex-direction: column; justify-content: flex-end; gap: 8px; padding-bottom: 30px; }
-}
-
-
 /* ---------- hero / ornament ---------- */
 .ornament-row {
   display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
