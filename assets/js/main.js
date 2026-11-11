@@ -337,7 +337,7 @@
   /* ---------------- page: single story ---------------- */
   if (page === 'story' && !D.stories.some(s => s.id === new URLSearchParams(location.search).get('id'))) {
     document.title = 'Coming soon — Aera Magazine';
-    $('#article').innerHTML = `<header class="page-head"><span class="kicker mono">stories</span><h1 class="page-title">Coming <em>soon</em></h1></header><div class="wrap">${comingSoon(true)}</div>`;
+    $('#article').innerHTML = `<header class="page-head"><span class="kicker mono">stories</span><h1 class="page-title"><span class="aera-word">Coming soon</span></h1></header><div class="wrap">${comingSoon(true)}</div>`;
   } else if (page === 'story') {
     const id = new URLSearchParams(location.search).get('id');
     const idx = Math.max(0, D.stories.findIndex(s => s.id === id));
