@@ -256,7 +256,12 @@
     // interleave so colours mix nicely
     const all = [], pools = [issueBooks, deskBooks, storyBooks, sectionBooks], total = pools.reduce((n, p) => n + p.length, 0);
     for (let i = 0; all.length < total; i++) pools.forEach(p => p[i] && all.push(p[i]));
-    all.forEach((b, i) => { b.lean = i % 7 === 4; b.cw = Math.round(b.h * .72); });
+    // spines take the palette in a fixed order: black, amaranth, ivory, mahogany, repeat
+    const SPINES = [['#000000', '#FFFFFF'], ['#7F1239', '#FFFFFF'], ['#FFF8E7', '#000000'], ['#330B13', '#FFF8E7']];
+    // the shelf loops this set, so make its length a multiple of 4 to keep the order unbroken at the seam
+    const base = all.slice();
+    while (all.length % SPINES.length) all.push(...base.map(b => ({ ...b })));
+    all.forEach((b, i) => { [b.c, b.t] = SPINES[i % SPINES.length]; b.lean = i % 7 === 4; b.cw = Math.round(b.h * .72); });
     return all;
   };
 
