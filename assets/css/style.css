@@ -148,7 +148,11 @@ body::after {
 .menu-links { display: flex; flex-direction: column; justify-content: center; padding: 24px 0; }
 .menu-links a { display: block; text-decoration: none; border-bottom: 1px solid #ffffff1f; padding: 2px 0; color: #ffffff99; }
 .menu-links span { display: inline-block; font-family: var(--f-title); text-transform: uppercase; font-size: clamp(36px, min(9.5vh, 15vw), 112px); line-height: .98; letter-spacing: .02em; transition: color .25s, transform .35s cubic-bezier(.3, 1.4, .5, 1); }
-.menu-links a:hover span, .menu-links a:focus-visible span, .menu-links a[aria-current="page"] span { color: var(--paper); }
+/* hovered link and the page you're on fill with amaranth lace, like the AERA letters */
+.menu-links a:hover span, .menu-links a:focus-visible span, .menu-links a[aria-current="page"] span {
+  background: url('../img/lace-texture.webp') center / 1.6em auto, var(--logo);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
 .menu-links a:hover span { transform: translateX(14px); }
 .menu-info { display: flex; flex-wrap: wrap; gap: 6px 28px; color: #ffffff80; font-size: 11px; }
 .menu-info p { margin: 0; }
