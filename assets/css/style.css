@@ -113,8 +113,14 @@ body::after {
 }
 .site-nav a { text-decoration: none; }
 /* logo: centred, and stretched wide like the brand logo file (OPTIOnyx at scaleX 1.83, no extra tracking) */
-.nav-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scaleX(1.83); font-family: var(--f-brand); font-weight: 400; letter-spacing: 0; font-size: 34px; line-height: 1; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.nav-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scaleX(1.83); font-family: var(--f-brand); font-weight: 400; letter-spacing: 0; font-size: 34px; line-height: 1; text-transform: uppercase; color: var(--ink); white-space: nowrap; padding: .15em .2em; /* room so the lace hover paints right up to the letter edges */ }
 @media (max-width: 480px) { .nav-logo { font-size: 28px; } }   /* keeps it clear of the menu button on small phones */
+/* hover (or keyboard focus): the same lace print as the big AERA, across the whole word. The tile is sized to cancel the logo's 1.83x stretch, so the lace isn't squashed. */
+.nav-logo:hover, .nav-logo:focus-visible {
+  background: url('../img/lace-texture.webp') center / calc(1.8em / 1.83) 2.755em, var(--logo);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .nav-logo small { font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--magenta); margin-left: -.2em; }
 .nav-links { display: none; }   /* tabs removed: the menu button covers every page */
 /* tabs: clear pills, the current page is filled pink */
