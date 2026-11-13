@@ -278,7 +278,9 @@
 
   /* ---------------- page: home ---------------- */
   if (page === 'home') {
-    $('#latest').innerHTML = !D.stories.length ? `<li>${comingSoon()}</li>` : D.stories.slice(0, 6).map((s, i) => `
+    // the "latest stories" list and the feature poster were taken off the home page, so these two blocks only run if someone adds them back
+    const latestEl = $('#latest');
+    if (latestEl) latestEl.innerHTML = !D.stories.length ? `<li>${comingSoon()}</li>` : D.stories.slice(0, 6).map((s, i) => `
       <li class="story-row reveal"><a href="${storyUrl(s)}" style="--row-c:${s.color === '#0B0B0B' ? 'var(--magenta)' : s.color}">
         <span class="n mono">${String(i + 1).padStart(2, '0')}</span>
         <span class="mono muted">${s.tag}</span>
@@ -289,7 +291,8 @@
       </a></li>`).join('');
 
     const f = D.stories[0];
-    $('#feature').innerHTML = f ? `
+    const featureEl = $('#feature');
+    if (featureEl) featureEl.innerHTML = f ? `
       <a class="poster-block reveal" href="${storyUrl(f)}" style="--pc:${f.color}; --img:url('${f.img}')" data-view="read →">
         <h2 class="photo-type">${(f.poster || [f.title]).map(l => `<span>${l}</span>`).join('')}</h2>
         <div class="poster-meta mono"><span>${f.tag} — issue ${f.issue}</span><span>${f.title.toLowerCase()} →</span></div>
