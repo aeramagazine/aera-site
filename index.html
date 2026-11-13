@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026111222101">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026111222501">
 </head>
 <body data-page="home">
   <div id="site-header"></div>
@@ -22,12 +22,85 @@
       </h1>
     </section>
 
-    <!-- THE BOOKSHELF -->
-    <section class="shelf-panel" aria-label="The Aera bookshelf: issues, stories and sections">
-      <div class="panel-corners"><span>aera</span><span>part vi</span><span><a href="about.html" style="text-decoration:none">about</a></span></div>
-      <h2 class="shelf-title"><span class="aera-word">The Aera</span><br><em>Archive</em></h2>
-      <div class="shelf" id="shelf"></div>
-      <div class="shelf-hint mono muted"><span>drag the shelf · <span class="on-mouse">hover</span><span class="on-touch">tap</span> a spine</span><span>click a cover to open →</span></div>
+    <!-- FEATURED STORIES (placeholder content: see "Home page featured stories" in HOW-TO-EDIT.md)
+         Photos: replace the files in assets/img/home/ keeping the same file names (lead.jpg, card-1.jpg, card-2.jpg, thumb-1.jpg … thumb-4.jpg).
+         Words: change the text between the tags. Each link goes to the Stories page until a story has its own page.
+         The bookshelf now lives on the Archive page. -->
+    <section class="feed" aria-label="Featured stories">
+
+      <div class="feed-col feed-left">
+        <article class="feed-card">
+          <a href="stories.html">
+            <img src="assets/img/home/card-1.jpg" alt="Placeholder photo for a story" width="800" height="800">
+            <span class="feed-cat">Fashion &amp; Culture</span>
+            <h3 class="feed-title">Placeholder headline for a story about fashion and culture</h3>
+            <span class="feed-by">By Author Name</span>
+          </a>
+        </article>
+        <article class="feed-card">
+          <a href="stories.html">
+            <img src="assets/img/home/card-2.jpg" alt="Placeholder photo for a story" width="800" height="800">
+            <span class="feed-cat">Fashion &amp; Politics</span>
+            <h3 class="feed-title">Placeholder headline for a story about fashion and politics</h3>
+            <span class="feed-by">By Author Name</span>
+          </a>
+        </article>
+      </div>
+
+      <div class="feed-col feed-main">
+        <article class="feed-card feed-lead">
+          <a href="stories.html">
+            <img src="assets/img/home/lead.jpg" alt="Placeholder photo for the main story" width="1200" height="1500">
+            <span class="feed-cat">Fashion &amp; Environment</span>
+            <h3 class="feed-title">Placeholder headline for the main story goes here, long enough to run across a few lines</h3>
+            <span class="feed-by">By Author Name<br>Photography by Photographer Name</span>
+          </a>
+        </article>
+      </div>
+
+      <div class="feed-col feed-right">
+        <article class="feed-item">
+          <a href="stories.html">
+            <div class="feed-text">
+              <span class="feed-cat">Fashion &amp; Culture</span>
+              <h3 class="feed-title">Placeholder headline for a shorter story</h3>
+              <span class="feed-by">By Author Name</span>
+            </div>
+            <img src="assets/img/home/thumb-1.jpg" alt="Placeholder photo for a story" width="400" height="533">
+          </a>
+        </article>
+        <article class="feed-item">
+          <a href="stories.html">
+            <div class="feed-text">
+              <span class="feed-cat">Fashion &amp; Politics</span>
+              <h3 class="feed-title">Placeholder headline for another short story that runs a little longer</h3>
+              <span class="feed-by">By Author Name</span>
+            </div>
+            <img src="assets/img/home/thumb-2.jpg" alt="Placeholder photo for a story" width="400" height="533">
+          </a>
+        </article>
+        <article class="feed-item">
+          <a href="stories.html">
+            <div class="feed-text">
+              <span class="feed-cat">Fashion &amp; Environment</span>
+              <h3 class="feed-title">Placeholder headline for a third short story</h3>
+              <span class="feed-by">By Author Name</span>
+            </div>
+            <img src="assets/img/home/thumb-3.jpg" alt="Placeholder photo for a story" width="400" height="533">
+          </a>
+        </article>
+        <article class="feed-item">
+          <a href="stories.html">
+            <div class="feed-text">
+              <span class="feed-cat">Fashion &amp; Culture</span>
+              <h3 class="feed-title">Placeholder headline for a fourth short story</h3>
+              <span class="feed-by">By Author Name</span>
+            </div>
+            <img src="assets/img/home/thumb-4.jpg" alt="Placeholder photo for a story" width="400" height="533">
+          </a>
+        </article>
+      </div>
+
     </section>
 
     <div class="wrap">
@@ -71,9 +144,7 @@
 
   <div id="site-footer"></div>
 
-  <script src="assets/js/data.js?v=2026111222101"></script>
-  <script src="assets/js/main.js?v=2026111222101"></script>
-  <script src="assets/js/shelf.js?v=2026111222101"></script>
-  <script>initShelf(document.getElementById('shelf'), AERA_BOOKS());</script>
+  <script src="assets/js/data.js?v=2026111222501"></script>
+  <script src="assets/js/main.js?v=2026111222501"></script>
 </body>
 </html>

@@ -47,6 +47,17 @@ aera-site/
 
 ---
 
+## Home page featured stories
+
+The big three-column block under the AERA wordmark on the home page (two small cards on the left, one big story in the middle, a list on the right) is plain text in `index.html`, between `<!-- FEATURED STORIES -->` and `</section>`.
+
+- **Photos:** the placeholder pictures live in `assets/img/home/`. Replace each file with your own photo **using the same file name**: `lead.jpg` (big, tall 4:5), `card-1.jpg` and `card-2.jpg` (square), `thumb-1.jpg` to `thumb-4.jpg` (small, tall 3:4). Nothing else needs to change.
+- **Words:** edit the text inside each `<span class="feed-cat">` (the section name), `<h3 class="feed-title">` (the headline, shown in Kamerik) and `<span class="feed-by">` (the author, shown in Rode).
+- **Links:** each `href="stories.html"` can point to a story instead, for example `story.html?id=fall-fits-2026`.
+- The bookshelf now lives only on the Archive page.
+
+---
+
 ## Add a new article
 
 1. **Add the photos.** Drop them into `assets/img/stories/`. Use simple names with no spaces, like `fall-fits-hero.jpg`. Landscape photos about 1600px wide work best.
