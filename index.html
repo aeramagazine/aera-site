@@ -9,17 +9,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026111222451">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026111223201">
 </head>
 <body data-page="home">
   <div id="site-header"></div>
 
   <main>
 
-    <section class="hero-name">
-      <h1 class="wordmark" aria-label="Aera">
-        <span>A</span><span>E</span><span>R</span><span>A</span>
-      </h1>
+    <!-- HERO: a magazine that opens and turns its pages (replaces the big AERA).
+         Photos live in assets/img/hero/: cover.jpg (one tall page, 864 x 1200) and spread-1.jpg, spread-2.jpg, spread-3.jpg
+         (each a whole two-page spread in one picture, 2160 x 1500). Replace the files keeping the same names, or add more
+         spreads by listing them in data-spreads below. See "Home page magazine hero" in HOW-TO-EDIT.md. -->
+    <section class="mag-hero" aria-label="Aera magazine preview">
+      <h1 class="sr-only">Aera Magazine</h1>
+      <div class="mag-stage is-closed" id="mag" role="button" tabindex="0" aria-label="Turn the page"
+           data-cover="assets/img/hero/cover.jpg"
+           data-spreads="assets/img/hero/spread-1.jpg, assets/img/hero/spread-2.jpg, assets/img/hero/spread-3.jpg">
+        <div class="mag-book">
+          <div class="mag-pg mag-pg-l"></div>
+          <div class="mag-pg mag-pg-r"></div>
+          <div class="mag-flip"><div class="mag-face mag-front"></div><div class="mag-face mag-back"></div></div>
+        </div>
+      </div>
     </section>
 
     <!-- FEATURED STORIES (placeholder content: see "Home page featured stories" in HOW-TO-EDIT.md)
@@ -144,7 +155,8 @@
 
   <div id="site-footer"></div>
 
-  <script src="assets/js/data.js?v=2026111222451"></script>
-  <script src="assets/js/main.js?v=2026111222451"></script>
+  <script src="assets/js/data.js?v=2026111223201"></script>
+  <script src="assets/js/main.js?v=2026111223201"></script>
+  <script src="assets/js/hero.js?v=2026111223201"></script>
 </body>
 </html>

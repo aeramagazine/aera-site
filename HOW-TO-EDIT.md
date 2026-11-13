@@ -25,6 +25,7 @@ aera-site/
 ├── HOW-TO-EDIT.md      ← this guide
 └── assets/
     ├── js/data.js      ← ★ ALL THE CONTENT LIVES HERE ★
+    ├── js/hero.js      ← the home page magazine that turns its pages
     ├── css/style.css   ← colours, fonts, layout
     └── img/            ← put your real photos here
         ├── stories/
@@ -47,9 +48,23 @@ aera-site/
 
 ---
 
+## Home page magazine hero
+
+The top of the home page is a magazine that opens and turns its pages: the cover sits in the middle, opens with a page turn, flips through the spreads (each one lands in exactly the same spot) and then cuts back to the cover. Click or tap it to turn the page yourself.
+
+- **Photos** live in `assets/img/hero/`. Replace each file with your own, **keeping the same name**:
+  - `cover.jpg`: the front cover, one tall page (864 x 1200 px, 3:4-ish).
+  - `spread-1.jpg`, `spread-2.jpg`, `spread-3.jpg`: each one is a **whole two-page spread in a single picture** (2160 x 1500 px). The left half becomes the left page and the right half the right page. A phone photo or a screenshot of your layout, cropped to that shape, works well.
+- **More or fewer spreads:** in `index.html`, find `data-spreads="…"` on the `id="mag"` line and list your files separated by commas, e.g. `data-spreads="assets/img/hero/spread-1.jpg, assets/img/hero/spread-2.jpg, assets/img/hero/spread-3.jpg, assets/img/hero/spread-4.jpg"`.
+- **Speed:** the pauses and the length of a page turn are the numbers at the top of `assets/js/hero.js` (`HOLD_COVER`, `HOLD_SPREAD`, `FLIP`, in milliseconds).
+- People who have "reduce motion" switched on see no automatic animation; the pages simply change when they click.
+- The old big AERA wordmark was taken off the home page. The AERA at the very top of every page (the logo) is still there.
+
+---
+
 ## Home page featured stories
 
-The big three-column block under the AERA wordmark on the home page (two small cards on the left, one big story in the middle, a list on the right) is plain text in `index.html`, between `<!-- FEATURED STORIES -->` and `</section>`.
+The big three-column block under the magazine at the top of the home page (two small cards on the left, one big story in the middle, a list on the right) is plain text in `index.html`, between `<!-- FEATURED STORIES -->` and `</section>`.
 
 - **Photos:** the placeholder pictures live in `assets/img/home/`. Replace each file with your own photo **using the same file name**: `lead.jpg` (big, tall 4:5), `card-1.jpg` and `card-2.jpg` (square), `thumb-1.jpg` to `thumb-4.jpg` (small, tall 3:4). Nothing else needs to change.
 - **Words:** edit the text inside each `<span class="feed-cat">` (the section name), `<h3 class="feed-title">` (the headline, shown in Kamerik) and `<span class="feed-by">` (the author, shown in Rode).

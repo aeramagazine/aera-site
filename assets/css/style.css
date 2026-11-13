@@ -769,3 +769,32 @@ main p em, main li em { color: var(--magenta); }
   .feed-right { gap: 28px; }
 }
 @media (max-width: 560px) { .feed-left { grid-template-columns: 1fr; } }
+
+/* ---------- home hero: a magazine that opens and turns its pages ---------- */
+.mag-hero { display: grid; justify-items: center; padding: clamp(20px, 3.5vw, 44px) var(--gutter) clamp(8px, 2vw, 24px); }
+.mag-stage {
+  --mag-h: min(76vh, 780px);                       /* how tall the open magazine is: about three quarters of the screen */
+  position: relative; width: min(100%, calc(var(--mag-h) * 1.44)); aspect-ratio: 1.44 / 1;   /* an open spread is 1.44 times wider than tall */
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 26px 28px rgba(51, 11, 19, .2));
+  opacity: 0; transition: opacity .6s;
+}
+.mag-stage.is-ready { opacity: 1; }
+.mag-book { position: absolute; inset: 0; perspective: 2600px; }
+.mag-book.is-sliding { transition: transform var(--mag-flip-ms, 1100ms) cubic-bezier(.65, .05, .3, 1); }
+.mag-stage.is-closed .mag-book { transform: translateX(-25%); }   /* closed: the cover (the right page) sits in the middle */
+.mag-pg { position: absolute; top: 0; bottom: 0; width: 50%; background: #fff no-repeat; }
+.mag-pg-l { left: 0; box-shadow: -2px 0 0 #ECE7DC, -4px 0 0 #FBF9F4, -6px 0 0 #DCD6C9; }   /* a few paper edges */
+.mag-pg-r { right: 0; box-shadow: 2px 0 0 #ECE7DC, 4px 0 0 #FBF9F4, 6px 0 0 #DCD6C9; }
+.mag-flip { position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; z-index: 3; display: none; transform-origin: left center; transform-style: preserve-3d; }
+.mag-face { position: absolute; inset: 0; background: #fff no-repeat; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.mag-face.mag-back { transform: rotateY(180deg); }
+[data-mag-kind="l"] { background-size: 200% 100%; background-position: 0 0; }       /* left half of a spread picture */
+[data-mag-kind="r"] { background-size: 200% 100%; background-position: 100% 0; }    /* right half of a spread picture */
+[data-mag-kind="c"] { background-size: cover; background-position: center; }         /* a single page, like the cover */
+/* soft shading where the pages curve into the spine */
+.mag-pg::after, .mag-face::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.mag-pg-r::after, .mag-face.mag-front::after { background: linear-gradient(to right, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0) 9%); }
+.mag-pg-l::after, .mag-face.mag-back::after { background: linear-gradient(to left, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0) 9%); }
+.mag-stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 14px; }
+@media (prefers-reduced-motion: reduce) { .mag-book.is-sliding { transition: none; } }
