@@ -48,6 +48,15 @@ aera-site/
 
 ---
 
+## About page
+
+- **Banner photo:** replace `assets/img/about/hero.jpg` with your own, keeping the name (wide, about 2700 x 1000 px). The big white "About" sits on top of it, so choose a photo where white text stays readable.
+- **Words:** the headline, the two paragraphs and the "Explore AERA." links are plain text in `about.html`. Each link's address is its `href`.
+- **The two big numbers** at the bottom are the `<span class="n">` lines near the end of `about.html`. Change the number and its label (`<span class="c">`) to whatever you like.
+- The **Editorial policy** and **Code of ethics** the About page links to are the entries in the "policies" list at the bottom of `join.html`. The Code of ethics entry is still a placeholder.
+
+---
+
 ## Home page magazine hero
 
 The top of the home page is a magazine that opens and turns its pages: the cover sits in the middle, opens with a page turn, flips through the spreads (each one lands in exactly the same spot) and then cuts back to the cover. Click or tap it to turn the page yourself.

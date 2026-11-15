@@ -799,20 +799,17 @@ main p em, main li em { color: var(--magenta); }
 .mag-stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 14px; }
 @media (prefers-reduced-motion: reduce) { .mag-book.is-sliding { transition: none; } }
 
-/* ---------- about page: our story + explore ---------- */
-.about-story, .about-explore { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: clamp(24px, 5vw, 80px); max-width: 1180px; margin: 0 auto; align-items: start; }
-.about-story .about-mission { margin: 0; max-width: none; }
-.about-explore-title { font-family: var(--f-didone); font-weight: 400; font-size: clamp(44px, 6vw, 92px); line-height: .98; letter-spacing: 0; margin: 0; }
-.about-explore p { font-size: clamp(19px, 1.8vw, 24px); line-height: 1.5; max-width: 34em; margin: 0 0 44px; }
-.about-explore p a { color: var(--logo); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.explore-list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
-.explore-list li { border-top: 1px solid var(--line); }
-.explore-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 22px 0; color: inherit; text-decoration: none; }
-.explore-list .t { font-family: var(--f-serif); font-size: clamp(24px, 2.6vw, 36px); line-height: 1.15; }
-.explore-list .d { font-family: var(--f-mono); text-transform: uppercase; font-size: 12px; letter-spacing: .14em; color: var(--muted); text-align: right; white-space: nowrap; }
-.explore-list a:hover .t { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
-@media (max-width: 860px) {
-  .about-story, .about-explore { grid-template-columns: 1fr; gap: 20px; }
-  .explore-list a { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .explore-list .d { text-align: left; }
-}
+/* ---------- about page: banner, centred column, big numbers ---------- */
+@font-face { font-family: 'Kamerik'; src: url('../fonts/kamerik-light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+.about-hero { position: relative; height: max(230px, min(37vw, 72vh)); overflow: hidden; background: var(--mahogany); }   /* about 2.7 times wider than tall, never shorter than 230px */
+.about-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-hero-title { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: #fff; font-family: var(--f-serif); font-weight: 300; font-style: italic; font-size: clamp(72px, 14vw, 210px); line-height: 1; letter-spacing: -.02em; text-transform: none; text-shadow: 0 2px 30px rgba(0, 0, 0, .25); }
+.about-col { width: min(100% - 2 * var(--gutter), 700px); margin: 0 auto; padding: clamp(64px, 10vw, 150px) 0 clamp(56px, 8vw, 110px); }
+.about-heading { font-family: var(--f-cond); font-weight: 700; font-size: clamp(36px, 4.7vw, 66px); line-height: .98; letter-spacing: -.035em; text-transform: none; margin: 0 0 .6em; }
+.about-col p { font-family: var(--f-serif); font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; letter-spacing: -.01em; margin: 0 0 1.3em; }
+.about-sub { font-family: var(--f-cond); font-weight: 700; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -.02em; text-transform: none; margin: 2em 0 .5em; }
+.about-col a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.about-col a:hover { color: var(--logo); }
+.about-stats { list-style: none; display: flex; justify-content: center; gap: clamp(40px, 9vw, 140px); margin: 0; padding: 0 var(--gutter) clamp(90px, 12vw, 180px); text-align: center; }
+.about-stats .n { display: block; font-family: var(--f-cond); font-weight: 700; font-style: italic; font-size: clamp(48px, 5.4vw, 80px); line-height: 1; letter-spacing: -.03em; }
+.about-stats .c { display: block; margin-top: 10px; font-family: var(--f-serif); font-size: 17px; }
