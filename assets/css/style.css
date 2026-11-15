@@ -17,7 +17,7 @@
 }
 
 :root {
-  --paper: #FFFEFC;   /* page background: near-pure white with the faintest warmth */
+  --paper: #FFFEFE;   /* page background: near-pure white, the faintest warm tint */
   --panel: #F1EDE5;   /* soft stone behind the bookshelf and gallery ring */
   --ink: #000000;
   --muted: #5F5F5F;
