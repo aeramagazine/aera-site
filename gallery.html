@@ -9,23 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/fonts/OPTIOnyx.otf" as="font" type="font/otf" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026111515301">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026111516001">
 </head>
 <body data-page="gallery">
   <div id="site-header"></div>
   <main>
-    <h1 class="sr-only">The Ring: photography from every Aera shoot</h1>
+    <!-- BANNER: replace assets/img/gallery/hero.jpg with your photo (same file name, about 2700 x 1000). -->
+    <section class="about-hero">
+      <img src="assets/img/gallery/hero.jpg" alt="" width="2700" height="1000">
+      <h1 class="about-hero-title">Gallery</h1>
+    </section>
 
-    <!-- THE RING: you stand inside a ring of big photos. Drag to look around; click a photo to open it.
-         All of it is built by assets/js/ring.js from the gallery list in assets/js/data.js. -->
+    <!-- THE RING: rises into view as you scroll -->
     <section id="ring-view" aria-label="Gallery: a ring of photographs">
-      <p class="sr-only">Drag to turn the ring. Use Tab to move between photos, the left and right arrow keys to turn it, and Enter to open a photo or a shoot.</p>
-      <div class="stage" id="stage" role="group" aria-label="Photographs from every shoot">
-        <div class="ring-world" id="ring-world"></div>
+      <p class="sr-only">Drag to turn the ring. Press Enter on a photo to open it, or on a coloured card to see just that shoot.</p>
+      <div class="ring-pin">
+        <div class="ring-rise" id="ring-rise"><div class="stage" id="stage" role="group" aria-label="Photographs from every shoot"></div></div>
       </div>
     </section>
 
-    <!-- the plain grid: shown instead of the ring for people who have reduced motion switched on -->
     <section id="grid-view" class="wrap" hidden>
       <header class="page-head"><span class="kicker mono">photography from every shoot</span><h2 class="page-title">The <em>Gallery</em></h2></header>
       <div class="filters" id="shoot-filters" role="group" aria-label="Filter by shoot"></div>
@@ -39,8 +41,8 @@
     <div class="bottom mono"><button class="lb-prev">← prev</button><span class="lb-credits"></span><button class="lb-next">next →</button></div>
   </div>
   <div id="site-footer"></div>
-  <script src="assets/js/data.js?v=2026111515301"></script>
-  <script src="assets/js/main.js?v=2026111515301"></script>
-  <script src="assets/js/ring.js?v=2026111515301"></script>
+  <script src="assets/js/data.js?v=2026111516001"></script>
+  <script src="assets/js/main.js?v=2026111516001"></script>
+  <script src="assets/js/ring.js?v=2026111516001"></script>
 </body>
 </html>
