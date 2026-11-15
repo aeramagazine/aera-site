@@ -533,43 +533,30 @@ main p em, main li em { color: var(--magenta); }
 .polaroid .ig:hover { color: var(--magenta); }
 @media (max-width: 560px) { .board { justify-content: center; } .polaroid { width: min(300px, 86vw); } }
 
-/* ---------- gallery ring ---------- */
-.ring-frame {
-  position: relative; margin: 0 var(--gutter);
-  background: var(--panel); height: calc(100vh - var(--nav-h) - 90px); min-height: 560px;
-  overflow: hidden;
-}
-.ring-frame .panel-corners { inset: 14px 18px auto; }
-.ring-frame .panel-bottom { position: absolute; inset: auto 18px 14px; display: flex; justify-content: space-between; z-index: 2; }
-.ring-frame .panel-bottom span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-.stage { position: absolute; inset: 0; touch-action: pan-y; user-select: none; cursor: grab; }
+/* ---------- gallery ring: you stand inside a ring of big photos ---------- */
+body[data-page="gallery"] .site-footer { margin-top: 0; }
+#ring-view { position: relative; height: calc(100svh - var(--nav-h)); min-height: 440px; overflow: hidden; background: var(--paper); }
+.stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 50% 50%; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
 .stage:active { cursor: grabbing; }
-.card {
+.ring-world { position: absolute; inset: 0; transform-style: preserve-3d; }
+.ring-card {
   position: absolute; left: 50%; top: 50%;
   width: var(--cw); height: var(--ch);
-  border-radius: 0;
-  overflow: hidden;
-  box-shadow: 0 10px 30px #00000020;
-  will-change: transform;
-  background: #ccc;
+  margin: calc(var(--ch) / -2) 0 0 calc(var(--cw) / -2);
+  visibility: hidden; will-change: transform;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  text-align: left; outline: none;
 }
-.card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-.card.type { display: grid; place-items: center; text-align: center; }
-.card.type.t-a { background: var(--ink); color: #fff; font-family: var(--f-display); font-size: 120px; line-height: 1; }
-.card.type.t-yep { background: #fff; color: var(--cherry); font-family: var(--f-cond); font-size: 64px; }
-.card.type.t-aera { background: var(--cobalt); color: #fff; font-family: var(--f-brand); font-size: 64px; letter-spacing: .04em; }
-.card.type.t-lime { background: #FFF8E7; color: var(--ink); font-family: var(--f-script); font-size: 44px; }
-.card.type.t-txt { background: var(--ink); color: #fff; font-family: var(--f-mono); text-transform: uppercase; font-size: 11px; text-align: left; padding: 14px; place-items: start; line-height: 1.5; }
-.ring-controls {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  display: grid; gap: 10px; z-index: 1;
-  width: min(300px, 46%);
-}
-.ring-controls label { display: grid; grid-template-columns: 58px 1fr 58px; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: 11px; color: #8b8b88; text-transform: uppercase; }
-.ring-controls label span:last-child { text-align: right; }
-.ring-controls input[type=range] { -webkit-appearance: none; appearance: none; height: 1px; background: #b8b8b4; }
-.ring-controls input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 10px; border-radius: 0; background: var(--ink); cursor: pointer; }
-.ring-controls input[type=range]::-moz-range-thumb { width: 26px; height: 10px; border-radius: 0; background: var(--ink); border: 0; cursor: pointer; }
+.ring-card-in { width: 100%; height: 100%; overflow: hidden; background: var(--panel); box-shadow: 0 18px 50px rgba(0, 0, 0, .13); transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s; }
+.ring-card:hover .ring-card-in { transform: scale(1.035); box-shadow: 0 28px 70px rgba(0, 0, 0, .22); }
+.ring-card:focus-visible .ring-card-in { outline: 3px solid var(--ink); outline-offset: 6px; }
+.ring-card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.ring-card.is-photo { cursor: zoom-in; }
+.ring-card.is-type { cursor: pointer; }
+.ring-card.is-type .ring-card-in { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: calc(var(--cw) * .07); }
+.ring-card .sec-name { font-family: var(--f-title); font-size: calc(var(--cw) * .2); line-height: .92; text-transform: uppercase; overflow-wrap: anywhere; }
+.ring-card .sec-count { font-family: var(--f-mono); text-transform: uppercase; letter-spacing: .08em; font-size: calc(var(--cw) * .035); }
+.ring-card.is-back .ring-card-in { background: var(--paper); color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
 .view-toggle { display: flex; justify-content: center; gap: 8px; margin: 0 0 22px; }
 
 .masonry { columns: 4 240px; column-gap: 14px; }
@@ -667,37 +654,6 @@ main p em, main li em { color: var(--magenta); }
 /* touch-friendly wording */
 .on-touch { display: none; }
 @media (hover: none), (pointer: coarse) { .on-touch { display: inline; } .on-mouse { display: none; } }
-
-/* ---------- ring sections (shoots) ---------- */
-.ring-sections {
-  position: absolute; top: 38px; left: 0; right: 0; z-index: 1000;
-  display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; padding: 0 12px;
-}
-.ring-sections button {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--f-mono); font-size: 12px; text-transform: uppercase;
-  padding: 6px 12px; background: #ffffffb3; border: 1px solid var(--ink);
-  transition: background .2s, color .2s;
-}
-.ring-sections button i { width: 9px; height: 9px; display: inline-block; border: 1px solid #0003; }
-.ring-sections button:hover, .ring-sections button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.ring-label { text-align: center; margin-bottom: 14px; display: grid; gap: 2px; }
-.ring-label #ring-name { font-family: var(--f-title); font-size: clamp(34px, 4.4vw, 60px); line-height: .9; text-transform: uppercase; letter-spacing: .02em; }
-.card.type.t-section, .card.type.t-back {
-  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
-  padding: 10px; text-align: left; cursor: pointer; border: 1px solid #0002;
-}
-.card .sec-name { font-family: var(--f-title); font-size: calc(var(--cw) * .26); line-height: .9; text-transform: uppercase; }
-.card .sec-count { font-family: var(--f-mono); text-transform: uppercase; font-size: 10px; }
-.card.type.t-back { background: var(--paper); color: var(--ink); border: 1px solid var(--ink); }
-@media (max-width: 700px) {
-  .ring-frame { height: calc(100svh - var(--nav-h) - 150px); min-height: 520px; margin: 0; }
-  .ring-sections { top: 34px; gap: 4px; }
-  .ring-sections button { font-size: 11px; padding: 5px 8px; }
-  .ring-controls { width: 60%; }
-  .ring-controls label { display: none; }
-  .ring-frame .panel-bottom span:nth-child(2) { display: none; }
-}
 
 /* ---------- coming soon ---------- */
 .soon { border-top: 1px solid var(--ink); padding: 34px 0 10px; }

@@ -179,7 +179,7 @@ gallery: [
 ```
 
 - `w` and `h` only need the **shape**: `600, 800` = tall, `800, 600` = wide, `600, 600` = square.
-- `shoot` names become the sections of the gallery ring. Each shoot gets a tab at the top and a coloured card in the ring that visitors click to enter that shoot. To pick a shoot's colour, edit `COLORS` near the top of `startRing()` in `assets/js/ring.js`.
+- `shoot` names become the sections of the gallery ring. Each shoot gets a coloured card in the ring that visitors click to enter that shoot (a white "← all" card brings everything back). To pick a shoot's colour, edit `COLORS` near the top of `startRing()` in `assets/js/ring.js`.
 - About 15–25 photos looks best in the ring.
 
 ---
